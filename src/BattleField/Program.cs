@@ -137,16 +137,16 @@
                 arr[x, y] = ProizvolniChisla.Next(1, 6);
             }
             PrintField(arr, n);
-            int 爆 = 0;
+            int bombsDetonated = 0;
             while (mineNumber > 0)
             {
                 int tmp = TimeToPlay(arr, n);
                 mineNumber -= tmp;
                 PrintField(arr, n);
                 //Console.WriteLine("Mines Blowed this round: {0}",tmp);
-                爆++;
+                bombsDetonated++;
             }
-            Console.WriteLine("游戏结束。引爆地雷：{0}", 爆);
+            Console.WriteLine("Game over! Number of bombs detonated:{0}", bombsDetonated);
         }
     
         static void Main(string[] args)
