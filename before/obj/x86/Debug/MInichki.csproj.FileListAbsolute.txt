@@ -1,0 +1,5 @@
+C:\Users\Kiko\Desktop\Battle-Field-4\bin\Debug\BattleField.exe
+C:\Users\Kiko\Desktop\Battle-Field-4\bin\Debug\BattleField.pdb
+C:\Users\Kiko\Desktop\Battle-Field-4\obj\x86\Debug\MInichki.csprojResolveAssemblyReference.cache
+C:\Users\Kiko\Desktop\Battle-Field-4\obj\x86\Debug\BattleField.exe
+C:\Users\Kiko\Desktop\Battle-Field-4\obj\x86\Debug\BattleField.pdb
