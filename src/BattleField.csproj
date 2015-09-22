@@ -51,6 +51,7 @@
     <Compile Include="GameObjects\QuintMine.cs" />
     <Compile Include="GameObjects\SingleMine.cs" />
     <Compile Include="GameObjects\TripleMine.cs" />
+    <Compile Include="InputProviders\ConsoleInput.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>

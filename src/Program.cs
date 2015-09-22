@@ -5,6 +5,7 @@
     using Common;
     using Fields;
     using GameObjects;
+    using InputProviders;
 
     public class Engine
     {
@@ -41,56 +42,26 @@
 
         public static int TimeToPlay(int[,] arr, int n)
         {
-            int x = 0;
-            int y = 0;
-            bool cond = true;
-            while (cond) //check input
+            int x;
+            int y;
+
+            ConsoleInput.GetTargetCoordinates(n, out x, out y);
+
+            if (arr[x, y] <= 0)
             {
-                Console.Write("Please enter coordinates: ");
-                string input = Console.ReadLine();
-                var coordinates = input.Split(' ');
-                if (coordinates.Length == 2)
-                {
-                    x = int.Parse(coordinates[0]) - 1;
-                    y = int.Parse(coordinates[1]) - 1;
-
-                    if (x < 0 || x > n || y < 0 || y > n)
-                        Console.WriteLine("Invalid move!");
-                    else
-                    {
-                        cond = false;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Invalid move!");
-                }
-
-                if (cond == false)
-                {
-                    if (arr[x, y] <= 0)
-                    {
-                        cond = true;
-                        Console.WriteLine("Invalid move!");
-                    }
-                }
-                    
+                Console.WriteLine("No Bomb there");
+                return 0;
             }
+
             return Explode(arr, n, x, y);
         }
 
         public static void InitiateGame()
         {
-            
-            int fieldSize;
             Console.Write("Welcome to \"Battle Field\" game.\nEnter battle field size: n = ");
-            int.TryParse(Console.ReadLine(), out fieldSize);
 
-            while (fieldSize < Constants.MinFieldSize || fieldSize > Constants.MaxFieldSize)
-            {
-                Console.Write("n is between 1 and 10! Please enter new n = ");
-                int.TryParse(Console.ReadLine(), out fieldSize);
-            }
+            int fieldSize = ConsoleInput.GetSizeInput();
+
             int[,] mineField = new int[fieldSize, fieldSize];
             var field = new Field(mineField);
             var minimumMines = Constants.MinimumPercentageOfMines * fieldSize * fieldSize / 100;
@@ -116,12 +87,12 @@
                 int tmp = TimeToPlay(mineField, fieldSize);
                 mineNumber -= tmp;
                 Console.WriteLine(field.GenerateFieldSymbols());
-                //Console.WriteLine("Mines Blown this round: {0}",tmp);
+                Console.WriteLine("Mines Blown this round: {0}", tmp);
                 bombsDetonated++;
             }
             Console.WriteLine("Game over! Number of bombs detonated:{0}", bombsDetonated);
         }
-    
+
         static void Main()
         {
             InitiateGame();
