@@ -3,39 +3,47 @@
     using System;
     using System.Linq;
 
+    using Common;
     using GameObjects;
 
     public class Engine
     {
-        public static void PrintField(int[,] arr, int n)
+        public static void PrintField(int[,] arr, int size)
         {
-            Console.Write(" ");
-            for (int i = 0; i < n; i++)
-            {
-
-
-
-                Console.Write(" {0}", i);
-            }
-            Console.WriteLine();
             Console.Write("  ");
-            for (int i = 0; i < n * 2; i++)
+
+            for (int i = 0; i < size; i++)
             {
-            
-            
-            
-                Console.Write("-");
+                Console.Write(" {0}", i + 1);
             }
+
             Console.WriteLine();
-            for (int i = 0; i < n; i++)
-            {   Console.Write("{0}|", i);
-                for (int j = 0; j < n; j++)
+            Console.Write("  ".PadRight((size+1) * 2 + 1, '-'));
+
+            //for (int i = 0; i < size * 2; i++)
+            //{
+            //    Console.Write("-");
+            //}
+            Console.WriteLine();
+
+            for (int i = 0; i < size; i++)
+            {
+                if (i == 9)
+                {
+                    Console.Write("{0}|", i + 1);
+                }
+                else
+                {
+                    Console.Write("{0}".PadLeft(4, ' ') + "|", i + 1);
+                }
+
+                for (int j = 0; j < size; j++)
                 {
                     char c;
                     switch (arr[i, j])
                     {
-                        case 0: c = '-'; break;
-                        case -1: c = 'X'; break;
+                        case Constants.EmptyField: c = '-'; break;
+                        case Constants.BlownField: c = 'X'; break;
                         default: c = (char)('0' + arr[i, j]); break;
                     }
                     Console.Write("{0} ", c);
@@ -58,16 +66,16 @@
             }
             //gyrmi bombata
             int counter = 0;
-            for (int i = -2; i < 3; i++)
+            for (int i = Constants.BombDownLeftRange; i <= Constants.BombUpRightRange; i++)
             {
-                for (int j = -2; j < 3; j++)
+                for (int j = Constants.BombDownLeftRange; j <= Constants.BombUpRightRange; j++)
                 {
                     if (x + i >= 0 && x + i < n && y + j >= 0 && y + j < n)
                     {
-                        if (expl[i + 2, j + 2] == 1)
+                        if (expl[i + 2, j + 2] == Constants.DetonationField)
                         {
                             if (arr[x + i, y + j] > 0) counter++;
-                            arr[x + i, y + j] = -1;
+                            arr[x + i, y + j] = Constants.BlownField;
                         }
                     }
                 }
@@ -82,39 +90,46 @@
             while (cond) //check input
             {
                 Console.Write("Please enter coordinates: ");
-                string s = Console.ReadLine();
-                if (s.Length > 2)
+                string input = Console.ReadLine();
+                var coordinates = input.Split(' ');
+                if (coordinates.Length == 2)
                 {
-                    x = s.ElementAt(0) - '0';
-                    y = s.ElementAt(2) - '0';
-                    if (x < 0 || x > 9 || y < 0 || y > 9 || s.ElementAt(1) != ' ')
+                    x = int.Parse(coordinates[0]) - 1;
+                    y = int.Parse(coordinates[1]) - 1;
+                    if (x < 0 || x > n || y < 0 || y > n)
                         Console.WriteLine("Invalid move!");
                     else
                     {
-                        if (s.Length > 3)
-                        {
-                            if (s.ElementAt(3) != ' ')
-                                Console.WriteLine("Invalid move!");
-                            else cond = false;
-                        }
-                        else cond = false;
+                        //if (s.Length > 3)
+                        //{
+                        //    if (s.ElementAt(3) != ' ')
+                        //        Console.WriteLine("Invalid move!");
+                        //    else cond = false;
+                        //}
+                        cond = false;
                     }
                 }
                 else
+                {
                     Console.WriteLine("Invalid move!");
+                }
+
                 if (cond == false)
+                {
                     if (arr[x, y] <= 0)
                     {
                         cond = true;
                         Console.WriteLine("Invalid move!");
                     }
+                }
+                    
             }
             return Explode(arr, n, x, y);
         }
 
         public static void InitiateGame()
         {
-            int n = 10;
+            int n;
             Console.Write("Welcome to \"Battle Field\" game.\nEnter battle field size: n = ");
             int.TryParse(Console.ReadLine(), out n);
             while (n < 1 || n > 10)

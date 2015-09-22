@@ -1,10 +1,5 @@
 ﻿namespace BattleField.GameObjects
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     public class TripleMine : Mine
     {
         private readonly int[,] mine =
