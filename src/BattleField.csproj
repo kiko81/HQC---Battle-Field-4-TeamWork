@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Fields\Field.cs" />
     <Compile Include="GameObjects\DoubleMine.cs" />
     <Compile Include="GameObjects\Mine.cs" />
     <Compile Include="GameObjects\QuadMine.cs" />

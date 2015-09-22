@@ -1,57 +1,13 @@
 ﻿namespace BattleField
 {
     using System;
-    using System.Linq;
 
     using Common;
+    using Fields;
     using GameObjects;
 
     public class Engine
     {
-        public static void PrintField(int[,] arr, int size)
-        {
-            Console.Write("  ");
-
-            for (int i = 0; i < size; i++)
-            {
-                Console.Write(" {0}", i + 1);
-            }
-
-            Console.WriteLine();
-            Console.Write("  ".PadRight((size+1) * 2 + 1, '-'));
-
-            //for (int i = 0; i < size * 2; i++)
-            //{
-            //    Console.Write("-");
-            //}
-            Console.WriteLine();
-
-            for (int i = 0; i < size; i++)
-            {
-                if (i == 9)
-                {
-                    Console.Write("{0}|", i + 1);
-                }
-                else
-                {
-                    Console.Write("{0}".PadLeft(4, ' ') + "|", i + 1);
-                }
-
-                for (int j = 0; j < size; j++)
-                {
-                    char c;
-                    switch (arr[i, j])
-                    {
-                        case Constants.EmptyField: c = '-'; break;
-                        case Constants.BlownField: c = 'X'; break;
-                        default: c = (char)('0' + arr[i, j]); break;
-                    }
-                    Console.Write("{0} ", c);
-                }
-                Console.WriteLine();
-            }
-        }
-
         public static int Explode(int[,] arr, int n, int x, int y)
         {
             int[,] expl;
@@ -85,7 +41,8 @@
 
         public static int TimeToPlay(int[,] arr, int n)
         {
-            int x = 0, y = 0;
+            int x = 0;
+            int y = 0;
             bool cond = true;
             while (cond) //check input
             {
@@ -96,16 +53,11 @@
                 {
                     x = int.Parse(coordinates[0]) - 1;
                     y = int.Parse(coordinates[1]) - 1;
+
                     if (x < 0 || x > n || y < 0 || y > n)
                         Console.WriteLine("Invalid move!");
                     else
                     {
-                        //if (s.Length > 3)
-                        //{
-                        //    if (s.ElementAt(3) != ' ')
-                        //        Console.WriteLine("Invalid move!");
-                        //    else cond = false;
-                        //}
                         cond = false;
                     }
                 }
@@ -129,42 +81,48 @@
 
         public static void InitiateGame()
         {
-            int n;
+            
+            int fieldSize;
             Console.Write("Welcome to \"Battle Field\" game.\nEnter battle field size: n = ");
-            int.TryParse(Console.ReadLine(), out n);
-            while (n < 1 || n > 10)
+            int.TryParse(Console.ReadLine(), out fieldSize);
+
+            while (fieldSize < Constants.MinFieldSize || fieldSize > Constants.MaxFieldSize)
             {
                 Console.Write("n is between 1 and 10! Please enter new n = ");
-                int.TryParse(Console.ReadLine(), out n);
+                int.TryParse(Console.ReadLine(), out fieldSize);
             }
-            int[,] arr = new int[n, n];
-            Random ProizvolniChisla = new Random(); //vhoid i inicializaciq na n i matricata;
-            int mineNumber = ProizvolniChisla.Next(15 * n * n / 100, 30 * n * n / 100 + 1);
+            int[,] mineField = new int[fieldSize, fieldSize];
+            var field = new Field(mineField);
+            var minimumMines = Constants.MinimumPercentageOfMines * fieldSize * fieldSize / 100;
+            Random rand = new Random(); //vhoid i inicializaciq na n i matricata;
+            int mineNumber = rand.Next(minimumMines, minimumMines * 2 + 1);
             for (int i = 0; i < mineNumber; i++) // randomizirane na minite i postavqneto im iz poleto
             {
-                int x = ProizvolniChisla.Next(0, n);
-                int y = ProizvolniChisla.Next(0, n);
-                while (arr[x, y] != 0)
+                int x = rand.Next(0, fieldSize);
+                int y = rand.Next(0, fieldSize);
+                while (mineField[x, y] != 0)
                 {
-                    x = ProizvolniChisla.Next(0, n);
-                    y = ProizvolniChisla.Next(0, n);
+                    x = rand.Next(0, fieldSize);
+                    y = rand.Next(0, fieldSize);
                 }
-                arr[x, y] = ProizvolniChisla.Next(1, 6);
+                mineField[x, y] = rand.Next(1, 6);
             }
-            PrintField(arr, n);
+
+            Console.WriteLine(field.GenerateFieldSymbols());
+            //PrintField(arr, n);
             int bombsDetonated = 0;
             while (mineNumber > 0)
             {
-                int tmp = TimeToPlay(arr, n);
+                int tmp = TimeToPlay(mineField, fieldSize);
                 mineNumber -= tmp;
-                PrintField(arr, n);
-                //Console.WriteLine("Mines Blowed this round: {0}",tmp);
+                Console.WriteLine(field.GenerateFieldSymbols());
+                //Console.WriteLine("Mines Blown this round: {0}",tmp);
                 bombsDetonated++;
             }
             Console.WriteLine("Game over! Number of bombs detonated:{0}", bombsDetonated);
         }
     
-        static void Main(string[] args)
+        static void Main()
         {
             InitiateGame();
         }
