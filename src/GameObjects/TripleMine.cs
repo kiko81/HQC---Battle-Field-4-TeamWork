@@ -1,15 +1,11 @@
 ﻿namespace BattleField.GameObjects
 {
+    using Common;
+
     public class TripleMine : Mine
     {
-        private readonly int[,] mine =
-        {
-            {0, 0, 1, 0, 0},
-            {0, 1, 1, 1, 0},
-            {1, 1, 1, 1, 1},
-            {0, 1, 1, 1, 0},
-            {0, 0, 1, 0, 0}
-        };
+        private readonly int[,] mine = Constants.TripleMine;
+
         protected override int[,] Explode()
         {
             return this.mine;

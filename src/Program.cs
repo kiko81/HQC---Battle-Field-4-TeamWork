@@ -31,7 +31,11 @@
                     {
                         if (expl[i + 2, j + 2] == Constants.DetonationField)
                         {
-                            if (arr[x + i, y + j] > 0) counter++;
+                            if (arr[x + i, y + j] > 0)
+                            {
+                                counter++;
+                            }
+
                             arr[x + i, y + j] = Constants.BlownField;
                         }
                     }

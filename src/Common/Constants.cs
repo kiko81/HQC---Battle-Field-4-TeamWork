@@ -12,5 +12,46 @@
         public const int MinFieldSize = 1;
         public const int MaxFieldSize = 10;
         public const int MinimumPercentageOfMines = 15;
+
+        public static readonly int[,] SingleMine =
+        {
+            {0, 0, 0, 0, 0},
+            {0, 1, 0, 1, 0},
+            {0, 0, 1, 0, 0},
+            {0, 1, 0, 1, 0},
+            {0, 0, 0, 0, 0}
+        };
+        public static readonly int[,] DoubleMine =
+        {
+            {0, 0, 0, 0, 0},
+            {0, 1, 1, 1, 0},
+            {0, 1, 1, 1, 0},
+            {0, 1, 1, 1, 0},
+            {0, 0, 0, 0, 0}
+        };
+        public static readonly int[,] TripleMine =
+        {
+            {0, 0, 1, 0, 0},
+            {0, 1, 1, 1, 0},
+            {1, 1, 1, 1, 1},
+            {0, 1, 1, 1, 0},
+            {0, 0, 1, 0, 0}
+        };
+        public static readonly int[,] QuadMine =
+        {
+            {0, 1, 1, 1, 0},
+            {1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1},
+            {0, 1, 1, 1, 0}
+        };
+        public static readonly int[,] QuintMine =
+        {
+            {1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1}
+        };
     }
 }
