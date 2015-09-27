@@ -20,24 +20,24 @@
             var minimumMines = Constants.MinimumPercentageOfMines * size * size / 100;
 
             Random rand = new Random(); 
-            int mineNumber = rand.Next(minimumMines, minimumMines * 2 + 1);
+            int numberOfMines = rand.Next(minimumMines, minimumMines * 2 + 1);
 
-            field1.PlaceMines(mineNumber);
+            field1.PlaceMines(numberOfMines);
 
             ConsoleOutput.Print(field1.ToString());
             
-            int numberOfShots = 0;
+            int shotCount = 0;
 
-            while (mineNumber > 0)
+            while (numberOfMines > 0)
             {
-                int tmp = field1.TakeAShot(field1.MineField);
-                mineNumber -= tmp;
+                int minesDetonated = field1.TakeAShot(field1.MineField);
+                numberOfMines -= minesDetonated;
                 ConsoleOutput.Print(field1.ToString());
-                ConsoleOutput.Print(string.Format("Mines detonated this round: {0}", tmp));
-                numberOfShots++;
+                ConsoleOutput.Print(string.Format("Mines detonated this round: {0}", minesDetonated));
+                shotCount++;
             }
 
-            ConsoleOutput.WinningMessage(numberOfShots);
+            ConsoleOutput.WinningMessage(shotCount);
         }
     }
 }

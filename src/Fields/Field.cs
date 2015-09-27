@@ -4,9 +4,7 @@
     using System.Text;
 
     using Common;
-
     using GameObjects;
-
     using InputProviders;
 
     public class Field
@@ -55,8 +53,8 @@
                     char symbol;
                     switch (MineField[i, j])
                     {
-                        case Constants.EmptyField: symbol = '-'; break;
-                        case Constants.BlownField: symbol = 'X'; break;
+                        case Constants.EmptyCell: symbol = '-'; break;
+                        case Constants.DetonatedCell: symbol = 'X'; break;
                         default: symbol = (char)('0' + MineField[i, j]); break;
                         //default: symbol = '-'; break;
                     }
@@ -82,26 +80,28 @@
                 case 5: expl = new QuintMine().Explosion; break;
                 default: throw new ArgumentException("No mine in this field");
             }
-            //gyrmi bombata
+            //bomb explodes
             int counter = 0;
+
             for (int i = Constants.BombDownLeftRange; i <= Constants.BombUpRightRange; i++)
             {
                 for (int j = Constants.BombDownLeftRange; j <= Constants.BombUpRightRange; j++)
                 {
                     if (x + i >= 0 && x + i < size && y + j >= 0 && y + j < size)
                     {
-                        if (expl[i + 2, j + 2] == Constants.DetonationField)
+                        if (expl[i + 2, j + 2] == Constants.DetonationSpot)
                         {
                             if (arr[x + i, y + j] > 0)
                             {
                                 counter++;
                             }
 
-                            arr[x + i, y + j] = Constants.BlownField;
+                            arr[x + i, y + j] = Constants.DetonatedCell;
                         }
                     }
                 }
             }
+
             return counter;
         }
 
@@ -114,6 +114,7 @@
 
             if (field[x, y] <= 0)
             {
+                field[x, y] = Constants.DetonatedCell;
                 Console.WriteLine("No Bomb there");
                 return 0;
             }
