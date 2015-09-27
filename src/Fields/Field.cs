@@ -6,15 +6,13 @@
 
     public class Field
     {
-
+        private readonly int size;
 
         public Field(int[,] mineField)
         {
             this.MineField = mineField;
-            this.Size = mineField.GetLength(0);
+            this.size = mineField.GetLength(0);
         }
-
-        private int Size { get; set; }
 
         private int[,] MineField { get; set; }
 
@@ -24,17 +22,17 @@
             boardField.Append("  ");
 
             // horizontal indexing
-            for (int i = 0; i < Size; i++)
+            for (int i = 0; i < size; i++)
             {
                 boardField.AppendFormat(" {0}", i + 1);
             }
 
             boardField.AppendLine();
             // horizontal split
-            boardField.Append("  ".PadRight((Size + 1) * 2 + 1, '-'));
+            boardField.Append("  ".PadRight((size + 1) * 2 + 1, '-'));
             boardField.AppendLine();
 
-            for (int i = 0; i < Size; i++)
+            for (int i = 0; i < size; i++)
             {
                 // vertical indexing and splitting
                 if (i < 9)
@@ -47,7 +45,7 @@
                 }
 
                 // the field itself
-                for (int j = 0; j < Size; j++)
+                for (int j = 0; j < size; j++)
                 {
                     char symbol;
                     switch (MineField[i, j])
@@ -57,13 +55,14 @@
                         default: symbol = (char)('0' + MineField[i, j]); break;
                         //default: symbol = '-'; break;
                     }
+
                     boardField.AppendFormat("{0} ", symbol);
                 }
+
                 boardField.AppendLine();
             }
 
             return boardField.ToString();
-
         }
     }
 }
