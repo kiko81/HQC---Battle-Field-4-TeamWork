@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="Fields\Field.cs" />
     <Compile Include="GameObjects\DoubleMine.cs" />
     <Compile Include="GameObjects\Mine.cs" />
@@ -52,7 +53,8 @@
     <Compile Include="GameObjects\SingleMine.cs" />
     <Compile Include="GameObjects\TripleMine.cs" />
     <Compile Include="InputProviders\ConsoleInput.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="EntryPoint.cs" />
+    <Compile Include="OutputProviders\ConsoleOutput.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Contracts\" />
