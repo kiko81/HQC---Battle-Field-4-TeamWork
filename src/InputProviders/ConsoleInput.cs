@@ -14,7 +14,7 @@
 
             while (fieldSize < Constants.MinFieldSize || fieldSize > Constants.MaxFieldSize)
             {
-                Console.Write("n is between 1 and 10! Please enter new n = ");
+                Console.Write("Field size is between {0} and {1}! Please enter field size: ", Constants.MinFieldSize, Constants.MaxFieldSize);
                 int.TryParse(Console.ReadLine(), out fieldSize);
             }
 
@@ -26,9 +26,10 @@
             x = 0;
             y = 0;
             bool isValid = false;
+
             while (!isValid) //check input
             {
-                Console.Write("Please enter coordinates X and Y separated by space: ");
+                Console.Write("Please enter X and Y coordinates separated by space: ");
                 string input = Console.ReadLine();
                 var coordinates = input.Split(' ')
                     .Where(entry => !string.IsNullOrEmpty(entry))
@@ -36,30 +37,28 @@
 
                 if (coordinates.Length == 2)
                 {
-                    if (int.TryParse((coordinates[1]), out x))
-                    {
-                        x -= 1;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid move!");
-                        continue;
-                    }
-
                     if (int.TryParse((coordinates[0]), out y))
                     {
                         y -= 1;
                     }
                     else
                     {
-                        Console.WriteLine("Invalid move!");
+                        Console.WriteLine("Invalid X coordinate!");
                         continue;
                     }
-                    //x = int.Parse(coordinates[1]) - 1;
-                    //y = int.Parse(coordinates[0]) - 1;
 
-                    if (x < 0 || x > size || y < 0 || y > size)
-                        Console.WriteLine("Invalid move!");
+                    if (int.TryParse((coordinates[1]), out x))
+                    {
+                        x -= 1;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid Y coordinate!");
+                        continue;
+                    }
+
+                    if (x < 0 || x >= size || y < 0 || y >= size)
+                        Console.WriteLine("Invalid move! Shot out of field");
                     else
                     {
                         isValid = true;
