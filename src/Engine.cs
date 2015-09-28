@@ -9,23 +9,23 @@
 
     public class Engine
     {
-        public Field CreateField()
-        {
-            int size = ConsoleInput.GetSizeInput();
-            int[,] mineField = new int[size, size];
-            var field = new Field(mineField);
+        //public Field CreateField()
+        //{
+        //    int size = ConsoleInput.GetSizeInput();
+        //    int[,] mineField = new int[size, size];
+        //    //var field = new Field(mineField);
 
-            var minimumMines = Constants.MinimumPercentageOfMines * size * size / 100;
+        //    var minimumMines = Constants.MinimumPercentageOfMines * size * size / 100;
 
-            Random rand = new Random();
-            int maximumMines = (minimumMines * 2) + 1;
+        //    Random rand = new Random();
+        //    int maximumMines = (minimumMines * 2) + 1;
 
-            int numberOfMines = rand.Next(minimumMines, maximumMines);
+        //    int numberOfMines = rand.Next(minimumMines, maximumMines);
 
-            field.PlaceMines(numberOfMines);
+        //    field.PlaceMines(numberOfMines);
 
-            return field;
-        }
+        //    return field;
+        //}
 
         public void PrintField(Field field)
         {
@@ -35,7 +35,7 @@
         public void PlayAtField(Field field)
         {
             int shotCount = 0;
-            int numberOfMines = field.NumberOfMines();
+            int numberOfMines = field.NumberOfMines;
 
             while (numberOfMines > 0)
             {

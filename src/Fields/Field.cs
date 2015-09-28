@@ -9,14 +9,17 @@
 
     public class Field
     {
-        private readonly int size;
-        private int numberOfMines;
-
-        public Field(int[,] mineField)
+        public Field(int size, int numberOfMines)
         {
-            this.MineField = mineField;
-            this.size = mineField.GetLength(0);
+            this.Size = size;
+            this.MineField = new int[size, size];
+            this.NumberOfMines = numberOfMines;
+            PlaceMines(numberOfMines);
         }
+
+        private int Size { get; set; }
+
+        public int NumberOfMines { get; private set; }
 
         public int[,] MineField { get; private set; }
 
@@ -26,17 +29,17 @@
             boardField.Append("  ");
 
             // horizontal indexing
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < this.Size; i++)
             {
                 boardField.AppendFormat(" {0}", i + 1);
             }
 
             boardField.AppendLine();
             // horizontal split
-            boardField.Append("  ".PadRight((size + 1) * 2 + 1, '-'));
+            boardField.Append("  ".PadRight((this.Size + 1) * 2 + 1, '-'));
             boardField.AppendLine();
 
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < this.Size; i++)
             {
                 // vertical indexing and splitting
                 if (i < 9)
@@ -49,7 +52,7 @@
                 }
 
                 // the field itself
-                for (int j = 0; j < size; j++)
+                for (int j = 0; j < this.Size; j++)
                 {
                     char symbol;
                     switch (MineField[i, j])
@@ -88,7 +91,7 @@
             {
                 for (int j = Constants.BombDownLeftRange; j <= Constants.BombUpRightRange; j++)
                 {
-                    if (x + i >= 0 && x + i < size && y + j >= 0 && y + j < size)
+                    if (x + i >= 0 && x + i < this.Size && y + j >= 0 && y + j < this.Size)
                     {
                         if (expl[i + 2, j + 2] == Constants.DetonationSpot)
                         {
@@ -111,7 +114,7 @@
             int x;
             int y;
 
-            ConsoleInput.GetTargetCoordinates(size, out x, out y);
+            ConsoleInput.GetTargetCoordinates(this.Size, out x, out y);
 
             if (field[x, y] <= 0)
             {
@@ -125,26 +128,24 @@
             return minesDetonated;
         }
 
-        public int NumberOfMines()
-        {
-            return this.numberOfMines;
-        }
+        //public int NumberOfMines()
+        //{
+        //    return this.numberOfMines;
+        //}
 
-        internal void PlaceMines(int mineNumber)
+        private void PlaceMines(int mineNumber)
         {
-            this.numberOfMines = mineNumber;
-
             Random rand = new Random();
 
             for (int i = 0; i < mineNumber; i++)
             {
-                int x = rand.Next(0, size);
-                int y = rand.Next(0, size);
+                int x = rand.Next(0, this.Size);
+                int y = rand.Next(0, this.Size);
 
                 while (this.MineField[x, y] != 0)
                 {
-                    x = rand.Next(0, size);
-                    y = rand.Next(0, size);
+                    x = rand.Next(0, this.Size);
+                    y = rand.Next(0, this.Size);
                 }
 
                 this.MineField[x, y] = rand.Next(1, 6);
