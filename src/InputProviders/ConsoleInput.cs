@@ -25,9 +25,9 @@
         {
             x = 0;
             y = 0;
-            bool isValid = false;
+            bool isValidPosition = false;
 
-            while (!isValid) //check input
+            while (!isValidPosition) //check input
             {
                 Console.Write("Please enter X and Y coordinates separated by space: ");
                 string input = Console.ReadLine();
@@ -58,10 +58,12 @@
                     }
 
                     if (x < 0 || x >= size || y < 0 || y >= size)
+                    {
                         Console.WriteLine("Invalid move! Shot out of field");
+                    }
                     else
                     {
-                        isValid = true;
+                        isValidPosition = true;
                     }
                 }
                 else
