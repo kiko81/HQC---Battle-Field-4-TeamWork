@@ -10,6 +10,7 @@
     public class Field
     {
         private readonly int size;
+        private int numberOfMines;
 
         public Field(int[,] mineField)
         {
@@ -71,7 +72,7 @@
         private int Explode(int[,] arr, int x, int y)
         {
             int[,] expl;
-            switch (arr[x, y]) // zadava ni koi vid bomba imame
+            switch (arr[x, y]) // gets the type of bomb
             {
                 case 1: expl = new SingleMine().Explosion; break;
                 case 2: expl = new DoubleMine().Explosion; break;
@@ -124,8 +125,15 @@
             return minesDetonated;
         }
 
+        public int NumberOfMines()
+        {
+            return this.numberOfMines;
+        }
+
         internal void PlaceMines(int mineNumber)
         {
+            this.numberOfMines = mineNumber;
+
             Random rand = new Random();
 
             for (int i = 0; i < mineNumber; i++)

@@ -46,6 +46,7 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Fields\Field.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="GameObjects\DoubleMine.cs" />
     <Compile Include="GameObjects\Mine.cs" />
     <Compile Include="GameObjects\QuadMine.cs" />

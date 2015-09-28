@@ -9,13 +9,11 @@
 
     public class Engine
     {
-        public void InitiateGame()
+        public Field CreateField()
         {
-            ConsoleOutput.WelcomeMessage();
-
             int size = ConsoleInput.GetSizeInput();
             int[,] mineField = new int[size, size];
-            var field1 = new Field(mineField);
+            var field = new Field(mineField);
 
             var minimumMines = Constants.MinimumPercentageOfMines * size * size / 100;
 
@@ -24,17 +22,26 @@
 
             int numberOfMines = rand.Next(minimumMines, maximumMines);
 
-            field1.PlaceMines(numberOfMines);
+            field.PlaceMines(numberOfMines);
 
-            ConsoleOutput.Print(field1.ToString());
-            
+            return field;
+        }
+
+        public void PrintField(Field field)
+        {
+            ConsoleOutput.Print(field.ToString());
+        }
+
+        public void PlayAtField(Field field)
+        {
             int shotCount = 0;
+            int numberOfMines = field.NumberOfMines();
 
             while (numberOfMines > 0)
             {
-                int minesDetonated = field1.TakeAShot(field1.MineField);
+                int minesDetonated = field.TakeAShot(field.MineField);
                 numberOfMines -= minesDetonated;
-                ConsoleOutput.Print(field1.ToString());
+                ConsoleOutput.Print(field.ToString());
                 ConsoleOutput.Print(string.Format("Mines detonated this round: {0}", minesDetonated));
                 shotCount++;
             }

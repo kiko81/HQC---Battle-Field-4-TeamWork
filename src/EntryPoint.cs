@@ -6,9 +6,8 @@
     {
         static void Main()
         {
-
-            var engine = new Engine();
-            engine.InitiateGame();
+            var game = Game.CreateInstance();
+            game.Initiate();
         }
     }
 }
