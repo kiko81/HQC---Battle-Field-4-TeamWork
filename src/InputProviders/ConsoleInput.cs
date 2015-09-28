@@ -56,8 +56,11 @@
                         Console.WriteLine("Invalid Y coordinate!");
                         continue;
                     }
+                    
+                    bool xOutOfBounds = x < 0 || x >= size;
+                    bool yOutOfBounds = y < 0 || y >= size;
 
-                    if (x < 0 || x >= size || y < 0 || y >= size)
+                    if (xOutOfBounds || yOutOfBounds)
                     {
                         Console.WriteLine("Invalid move! Shot out of field");
                     }
