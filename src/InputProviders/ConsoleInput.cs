@@ -14,7 +14,9 @@
 
             while (fieldSize < Constants.MinFieldSize || fieldSize > Constants.MaxFieldSize)
             {
-                Console.Write("Field size is between {0} and {1}! Please enter field size: ", Constants.MinFieldSize, Constants.MaxFieldSize);
+                Console.Write("Field size must be between {0} and {1}! Please enter valid field size: ",
+                    Constants.MinFieldSize, Constants.MaxFieldSize);
+
                 int.TryParse(Console.ReadLine(), out fieldSize);
             }
 

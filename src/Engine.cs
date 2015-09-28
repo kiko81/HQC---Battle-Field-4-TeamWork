@@ -19,8 +19,10 @@
 
             var minimumMines = Constants.MinimumPercentageOfMines * size * size / 100;
 
-            Random rand = new Random(); 
-            int numberOfMines = rand.Next(minimumMines, minimumMines * 2 + 1);
+            Random rand = new Random();
+            int maximumMines = (minimumMines * 2) + 1;
+
+            int numberOfMines = rand.Next(minimumMines, maximumMines);
 
             field1.PlaceMines(numberOfMines);
 
