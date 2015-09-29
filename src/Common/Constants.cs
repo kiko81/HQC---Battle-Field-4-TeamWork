@@ -13,6 +13,15 @@
         public const int MaxFieldSize = 10;
         public const int MinimumPercentageOfBombs = 15;
 
+        public static readonly int[,] NoBomb =
+        {
+            {0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0},
+            {0, 0, 1, 0, 0},
+            {0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0}
+        };
+        
         public static readonly int[,] SingleBomb =
         {
             {0, 0, 0, 0, 0},

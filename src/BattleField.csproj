@@ -49,6 +49,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="GameObjects\DoubleBomb.cs" />
     <Compile Include="GameObjects\Bomb.cs" />
+    <Compile Include="GameObjects\NoBomb.cs" />
     <Compile Include="GameObjects\QuadBomb.cs" />
     <Compile Include="GameObjects\QuintBomb.cs" />
     <Compile Include="GameObjects\SingleBomb.cs" />
