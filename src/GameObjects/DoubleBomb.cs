@@ -2,13 +2,13 @@
 {
     using Common;
 
-    public class SingleMine : Mine
+    public class DoubleBomb : Bomb
     {
-        private readonly int[,] mine = Constants.SingleMine;
+        private readonly int[,] bomb = Constants.DoubleBomb;
 
         protected override int[,] Explode()
         {
-            return this.mine;
+            return this.bomb;
         }
     }
 }

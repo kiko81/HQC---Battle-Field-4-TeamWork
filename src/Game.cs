@@ -1,17 +1,15 @@
 ﻿namespace BattleField
 {
     using System;
-    using BattleField.OutputProviders;
 
     using Common;
-
     using Fields;
-
+    using OutputProviders;
     using InputProviders;
 
     public class Game
     {
-        Random rand = new Random();
+        private readonly Random rand = new Random();
 
         private static Game game;
 
@@ -19,7 +17,7 @@
         {
         }
 
-        public static Game CreateInstance()
+        public static Game Instance()
         {
             return game ?? (game = new Game());
         }
@@ -28,15 +26,14 @@
         {
             ConsoleOutput.WelcomeMessage();
             var size = ConsoleInput.GetSizeInput();
-            var minimumMines = Constants.MinimumPercentageOfMines * size * size / 100;
-            int maximumMines = (minimumMines * 2) + 1;
+            var minimumMines = Constants.MinimumPercentageOfBombs * size * size / 100;
+            int maximumMines = minimumMines * 2 + 1;
             int numberOfMines = rand.Next(minimumMines, maximumMines);
             var field1 = new Field(size, numberOfMines);
 
-            var engine = new Engine();
+            var engine = Engine.Instance();
             
-            engine.PrintField(field1);
-            engine.PlayAtField(field1);
+            engine.Start(field1);
         }
     }
 }

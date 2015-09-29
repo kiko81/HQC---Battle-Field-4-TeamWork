@@ -6,7 +6,7 @@
     {
         static void Main()
         {
-            var game = Game.CreateInstance();
+            var game = Game.Instance();
             game.Initiate();
         }
     }

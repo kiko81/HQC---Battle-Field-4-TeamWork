@@ -59,12 +59,12 @@
                         continue;
                     }
                     
-                    bool xOutOfBounds = x < 0 || x >= size;
-                    bool yOutOfBounds = y < 0 || y >= size;
+                    bool xOutOfBounds = x < 0 || size <= x;
+                    bool yOutOfBounds = y < 0 || size <= y;
 
                     if (xOutOfBounds || yOutOfBounds)
                     {
-                        Console.WriteLine("Invalid move! Shot out of field");
+                        Console.WriteLine("Invalid target! Shot out of field");
                     }
                     else
                     {
@@ -73,7 +73,7 @@
                 }
                 else
                 {
-                    Console.WriteLine("Invalid move!");
+                    Console.WriteLine("Invalid target!");
                 }
             }
         }

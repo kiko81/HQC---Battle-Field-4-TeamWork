@@ -1,9 +1,6 @@
 ﻿namespace BattleField.OutputProviders
 {
     using System;
-    using System.Text;
-
-    using Common;
 
     public static class ConsoleOutput
     {

@@ -1,6 +1,6 @@
 ﻿namespace BattleField.GameObjects
 {
-    public abstract class Mine
+    public abstract class Bomb
     {
         public int[,] Explosion
         {

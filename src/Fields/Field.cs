@@ -9,19 +9,21 @@
 
     public class Field
     {
-        public Field(int size, int numberOfMines)
+        private Random rand = new Random();
+
+        public Field(int size, int numberOfBombs)
         {
             this.Size = size;
-            this.MineField = new int[size, size];
-            this.NumberOfMines = numberOfMines;
-            PlaceMines(numberOfMines);
+            this.BombField = new int[size, size];
+            this.NumberOfBombs = numberOfBombs;
+            PlaceBombs(numberOfBombs);
         }
 
         private int Size { get; set; }
 
-        public int NumberOfMines { get; private set; }
+        public int NumberOfBombs { get; private set; }
 
-        public int[,] MineField { get; private set; }
+        public int[,] BombField { get; private set; }
 
         public override string ToString()
         {
@@ -55,11 +57,11 @@
                 for (int j = 0; j < this.Size; j++)
                 {
                     char symbol;
-                    switch (MineField[i, j])
+                    switch (BombField[i, j])
                     {
                         case Constants.EmptyCell: symbol = '-'; break;
                         case Constants.DetonatedCell: symbol = 'X'; break;
-                        default: symbol = (char)('0' + MineField[i, j]); break;
+                        default: symbol = (char)('0' + BombField[i, j]); break;
                         //default: symbol = '-'; break;
                     }
 
@@ -77,11 +79,11 @@
             int[,] expl;
             switch (arr[x, y]) // gets the type of bomb
             {
-                case 1: expl = new SingleMine().Explosion; break;
-                case 2: expl = new DoubleMine().Explosion; break;
-                case 3: expl = new TripleMine().Explosion; break;
-                case 4: expl = new QuadMine().Explosion; break;
-                case 5: expl = new QuintMine().Explosion; break;
+                case 1: expl = new SingleBomb().Explosion; break;
+                case 2: expl = new DoubleBomb().Explosion; break;
+                case 3: expl = new TripleBomb().Explosion; break;
+                case 4: expl = new QuadBomb().Explosion; break;
+                case 5: expl = new QuintBomb().Explosion; break;
                 default: throw new ArgumentException("No mine in this field");
             }
             //bomb explodes
@@ -119,36 +121,29 @@
             if (field[x, y] <= 0)
             {
                 field[x, y] = Constants.DetonatedCell;
-                Console.WriteLine("No Bomb there");
+                Console.WriteLine("No mine there");
                 return 0;
             }
 
-            var minesDetonated = Explode(field, x, y);
+            var bombsDetonated = Explode(field, x, y);
 
-            return minesDetonated;
+            return bombsDetonated;
         }
 
-        //public int NumberOfMines()
-        //{
-        //    return this.numberOfMines;
-        //}
-
-        private void PlaceMines(int mineNumber)
+        private void PlaceBombs(int mineNumber)
         {
-            Random rand = new Random();
-
             for (int i = 0; i < mineNumber; i++)
             {
                 int x = rand.Next(0, this.Size);
                 int y = rand.Next(0, this.Size);
 
-                while (this.MineField[x, y] != 0)
+                while (this.BombField[x, y] != 0)
                 {
                     x = rand.Next(0, this.Size);
                     y = rand.Next(0, this.Size);
                 }
 
-                this.MineField[x, y] = rand.Next(1, 6);
+                this.BombField[x, y] = rand.Next(1, 6);
             }
         }
     }

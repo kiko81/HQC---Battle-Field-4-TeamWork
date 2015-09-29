@@ -11,9 +11,9 @@
 
         public const int MinFieldSize = 1;
         public const int MaxFieldSize = 10;
-        public const int MinimumPercentageOfMines = 15;
+        public const int MinimumPercentageOfBombs = 15;
 
-        public static readonly int[,] SingleMine =
+        public static readonly int[,] SingleBomb =
         {
             {0, 0, 0, 0, 0},
             {0, 1, 0, 1, 0},
@@ -21,7 +21,7 @@
             {0, 1, 0, 1, 0},
             {0, 0, 0, 0, 0}
         };
-        public static readonly int[,] DoubleMine =
+        public static readonly int[,] DoubleBomb =
         {
             {0, 0, 0, 0, 0},
             {0, 1, 1, 1, 0},
@@ -29,7 +29,7 @@
             {0, 1, 1, 1, 0},
             {0, 0, 0, 0, 0}
         };
-        public static readonly int[,] TripleMine =
+        public static readonly int[,] TripleBomb =
         {
             {0, 0, 1, 0, 0},
             {0, 1, 1, 1, 0},
@@ -37,7 +37,7 @@
             {0, 1, 1, 1, 0},
             {0, 0, 1, 0, 0}
         };
-        public static readonly int[,] QuadMine =
+        public static readonly int[,] QuadBomb =
         {
             {0, 1, 1, 1, 0},
             {1, 1, 1, 1, 1},
@@ -45,7 +45,7 @@
             {1, 1, 1, 1, 1},
             {0, 1, 1, 1, 0}
         };
-        public static readonly int[,] QuintMine =
+        public static readonly int[,] QuintBomb =
         {
             {1, 1, 1, 1, 1},
             {1, 1, 1, 1, 1},
