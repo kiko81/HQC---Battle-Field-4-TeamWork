@@ -58,6 +58,7 @@
     <Compile Include="InputProviders\ConsoleInput.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="OutputProviders\ConsoleOutput.cs" />
+    <Compile Include="Players\Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Contracts\" />

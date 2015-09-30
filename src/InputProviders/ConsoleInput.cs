@@ -14,8 +14,7 @@
 
             while (fieldSize < Constants.MinFieldSize || fieldSize > Constants.MaxFieldSize)
             {
-                Console.Write("Field size must be between {0} and {1}! Please enter valid field size: ",
-                    Constants.MinFieldSize, Constants.MaxFieldSize);
+                Console.Write("Field size must be between {0} and {1}! Please enter valid field size: ", Constants.MinFieldSize, Constants.MaxFieldSize);
 
                 int.TryParse(Console.ReadLine(), out fieldSize);
             }
@@ -29,7 +28,7 @@
             y = 0;
             bool isValidPosition = false;
 
-            while (!isValidPosition) //check input
+            while (!isValidPosition) 
             {
                 Console.Write("Please enter X and Y coordinates separated by space: ");
                 string input = Console.ReadLine();
@@ -39,7 +38,7 @@
 
                 if (coordinates.Length == 2)
                 {
-                    if (int.TryParse((coordinates[0]), out y))
+                    if (int.TryParse(coordinates[0], out y))
                     {
                         y -= 1;
                     }
@@ -49,7 +48,7 @@
                         continue;
                     }
 
-                    if (int.TryParse((coordinates[1]), out x))
+                    if (int.TryParse(coordinates[1], out x))
                     {
                         x -= 1;
                     }
@@ -59,10 +58,10 @@
                         continue;
                     }
                     
-                    bool xOutOfBounds = x < 0 || size <= x;
-                    bool yOutOfBounds = y < 0 || size <= y;
+                    bool rowOutOfBounds = x < 0 || size <= x;
+                    bool colOutOfBounds = y < 0 || size <= y;
 
-                    if (xOutOfBounds || yOutOfBounds)
+                    if (rowOutOfBounds || colOutOfBounds)
                     {
                         Console.WriteLine("Invalid target! Shot out of field");
                     }
@@ -76,6 +75,19 @@
                     Console.WriteLine("Invalid target!");
                 }
             }
+        }
+
+        public static string GetNameInput(int player)
+        {
+            var input = string.Empty;
+            Console.Write("Please enter player {0} name: ", player);
+
+            while (string.IsNullOrWhiteSpace(input))
+            {
+                input = Console.ReadLine();
+            }
+
+            return input;
         }
     }
 }

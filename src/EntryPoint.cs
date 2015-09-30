@@ -4,11 +4,10 @@
 
     public class EntryPoint
     {
-        static void Main()
+        public static void Main()
         {
             var game = Game.Instance();
             game.Initiate();
         }
     }
 }
-
