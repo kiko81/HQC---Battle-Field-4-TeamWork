@@ -1,6 +1,5 @@
 ﻿namespace BattleField.Fields
 {
-    using System;
     using System.Text;
 
     using Common;
@@ -9,8 +8,6 @@
 
     public class Field
     {
-        private Random rand = new Random();
-
         public Field(int size, int numberOfBombs)
         {
             this.Size = size;
@@ -135,16 +132,16 @@
         {
             for (int i = 0; i < mineNumber; i++)
             {
-                int x = rand.Next(0, this.Size);
-                int y = rand.Next(0, this.Size);
+                int x = RandomUtils.GenerateRandomNumber(0, this.Size);
+                int y = RandomUtils.GenerateRandomNumber(0, this.Size);
 
                 while (this.BombField[x, y] != 0)
                 {
-                    x = rand.Next(0, this.Size);
-                    y = rand.Next(0, this.Size);
+                    x = RandomUtils.GenerateRandomNumber(0, this.Size);
+                    y = RandomUtils.GenerateRandomNumber(0, this.Size);
                 }
 
-                this.BombField[x, y] = rand.Next(1, 6);
+                this.BombField[x, y] = RandomUtils.GenerateRandomNumber(1, 6);
             }
         }
     }

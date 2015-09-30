@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\RandomUtils.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Fields\Field.cs" />
     <Compile Include="Game.cs" />
