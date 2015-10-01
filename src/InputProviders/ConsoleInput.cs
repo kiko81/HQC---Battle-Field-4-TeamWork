@@ -77,13 +77,14 @@
             }
         }
 
-        public static string GetNameInput(int player)
+        public static string GetNameInput(string player)
         {
-            var input = string.Empty;
-			
+            Console.Write("Please enter {0} player name: ", player);
+            var input = Console.ReadLine();
+           
             while (string.IsNullOrWhiteSpace(input))
             {
-                Console.Write("Please enter player {0} name: ", player);
+                Console.Write("Please enter some name for {0} player: ", player);
                 input = Console.ReadLine();
             }
 

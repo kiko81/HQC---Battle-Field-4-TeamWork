@@ -9,7 +9,7 @@
         public const int BombUpRightRange = 2;
         public const int DetonationSpot = 1;
 
-        public const int MinFieldSize = 1;
+        public const int MinFieldSize = 5;
         public const int MaxFieldSize = 10;
         public const int MinimumPercentageOfBombs = 15;
 

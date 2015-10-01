@@ -30,7 +30,6 @@
 
         private void UpdateGame(Player currentPlayer)
         {
-            var shotCount = currentPlayer.ShotCount;
             var numberOfBombs = currentPlayer.Field.NumberOfBombs;
             var field = currentPlayer.Field.Grid;
 
@@ -41,7 +40,7 @@
                 numberOfBombs -= minesDetonated;
                 ConsoleOutput.Print(currentPlayer.Field.ToString());
                 ConsoleOutput.PrintRoundSummary(minesDetonated);
-                shotCount++;
+                currentPlayer.ShotCount++;
 
                 // TODO
                 // here more logic for conditions for bonuses and changing players
@@ -51,7 +50,7 @@
                 // else .......
             }
 
-            ConsoleOutput.WinningMessage(currentPlayer.Name, shotCount);
+            ConsoleOutput.WinningMessage(currentPlayer.Name, currentPlayer.ShotCount);
         }
     }
 }

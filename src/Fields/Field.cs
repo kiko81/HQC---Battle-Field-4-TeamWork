@@ -74,7 +74,7 @@
             return playField.ToString();
         }
 
-        public int Explosion(int[,] field, int x, int y)
+        public int Explode(int[,] field, int x, int y)
         {
             int[,] expl;
 

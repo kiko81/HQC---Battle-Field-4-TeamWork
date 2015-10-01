@@ -27,7 +27,7 @@
         public int ShotCount
         {
             get { return this.shotCount; }
-            private set { this.shotCount = value; }
+            set { this.shotCount = value; }
         }
 
         public int TakeAShot(int[,] field)
@@ -37,7 +37,7 @@
 
             ConsoleInput.GetTargetCoordinates(this.Field.Size, out x, out y);
 
-            var bombsDetonated = this.Field.Explosion(field, x, y);
+            var bombsDetonated = this.Field.Explode(field, x, y);
 
             return bombsDetonated;
         }
