@@ -1,5 +1,7 @@
 ﻿namespace BattleField
 {
+    using System;
+
     using Fields;
     using OutputProviders;
 
@@ -42,6 +44,11 @@
                 ConsoleOutput.PrintRoundSummary(minesDetonated);
                 currentPlayer.ShotCount++;
 
+                if (numberOfBombs > 0 && minesDetonated < 1)
+                {
+                    currentPlayer = this.ChangePlayer(currentPlayer);
+                    this.UpdateGame(currentPlayer);
+                }
                 // TODO
                 // here more logic for conditions for bonuses and changing players
                 // if sth - no break - current player continues
@@ -50,7 +57,14 @@
                 // else .......
             }
 
+
+
             ConsoleOutput.WinningMessage(currentPlayer.Name, currentPlayer.ShotCount);
+        }
+
+        private Player ChangePlayer(Player currentPlayer)
+        {
+            return currentPlayer == this.Player1 ? Player2 : Player1;
         }
     }
 }

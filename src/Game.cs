@@ -4,7 +4,6 @@
     using Fields;
     using InputProviders;
     using OutputProviders;
-
     using Players;
 
     public class Game
