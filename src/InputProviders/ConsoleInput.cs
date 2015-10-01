@@ -80,10 +80,10 @@
         public static string GetNameInput(int player)
         {
             var input = string.Empty;
-            Console.Write("Please enter player {0} name: ", player);
-
+			
             while (string.IsNullOrWhiteSpace(input))
             {
+                Console.Write("Please enter player {0} name: ", player);
                 input = Console.ReadLine();
             }
 

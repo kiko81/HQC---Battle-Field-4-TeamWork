@@ -9,9 +9,14 @@
             Console.Write("Welcome to \"Battle Field\" game.\nEnter battle field size: ");
         }
 
-        public static void WinningMessage(int numberOfShots)
+        public static void WinningMessage(string player, int numberOfShots)
         {
-            Console.WriteLine("Game over! Number of shots made:{0}", numberOfShots);
+            Console.WriteLine("Game over! {0} WINS!!!\nNumber of shots made:{1}", player, numberOfShots);
+        }
+
+        public static void PrintRoundSummary(int minesDetonated)
+        {
+            Console.WriteLine("Mines detonated this round: {0}", minesDetonated);
         }
 
         public static void Print(string str)

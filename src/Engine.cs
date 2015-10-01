@@ -3,23 +3,24 @@
     using Fields;
     using OutputProviders;
 
+    using Players;
+
     public class Engine
     {
-        private static Engine engine;
-
-        private Engine()
+        public Engine(Player player1, Player player2)
         {
+            this.Player1 = player1;
+            this.Player2 = player2;
         }
 
-        public static Engine Instance()
-        {
-            return engine ?? (engine = new Engine());
-        }
+        private Player Player1 { get; set; }
 
-        public void Start(Field field)
+        private Player Player2 { get; set; }
+
+        public void Start(Player currentPlayer)
         {
-            this.PrintField(field);
-            this.UpdateGame(field);
+            this.PrintField(currentPlayer.Field);
+            this.UpdateGame(currentPlayer);
         }
 
         private void PrintField(Field field)
@@ -27,21 +28,30 @@
             ConsoleOutput.Print(field.ToString());
         }
 
-        private void UpdateGame(Field field)
+        private void UpdateGame(Player currentPlayer)
         {
-            int shotCount = 0;
-            int numberOfBombs = field.NumberOfBombs;
+            var shotCount = currentPlayer.ShotCount;
+            var numberOfBombs = currentPlayer.Field.NumberOfBombs;
+            var field = currentPlayer.Field.Grid;
 
             while (numberOfBombs > 0)
             {
-                int minesDetonated = field.TakeAShot(field.BombField);
+                ConsoleOutput.Print(string.Format("{0} on turn", currentPlayer.Name));
+                var minesDetonated = currentPlayer.TakeAShot(field);
                 numberOfBombs -= minesDetonated;
-                ConsoleOutput.Print(field.ToString());
-                ConsoleOutput.Print(string.Format("Mines detonated this round: {0}", minesDetonated));
+                ConsoleOutput.Print(currentPlayer.Field.ToString());
+                ConsoleOutput.PrintRoundSummary(minesDetonated);
                 shotCount++;
+
+                // TODO
+                // here more logic for conditions for bonuses and changing players
+                // if sth - no break - current player continues
+                // else if - current player continues with enhancement shot (e.g. chain reaction enabled for 1 shot)
+                // else sth else - break and swap players
+                // else .......
             }
 
-            ConsoleOutput.WinningMessage(shotCount);
+            ConsoleOutput.WinningMessage(currentPlayer.Name, shotCount);
         }
     }
 }

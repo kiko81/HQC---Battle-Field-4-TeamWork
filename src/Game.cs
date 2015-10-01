@@ -33,9 +33,9 @@
             var field2 = new Field(size, numberOfMines);
             var secondPlayerName = ConsoleInput.GetNameInput(2);
             var player2 = new Player(secondPlayerName, field2);
-            var engine = Engine.Instance();
+            var engine = new Engine(player1, player2);
             
-            engine.Start(field1);
+            engine.Start(player1);
         }
     }
 }
