@@ -9,10 +9,13 @@
 
     public class Engine
     {
+        private bool isGameOver;
+
         public Engine(Player player1, Player player2)
         {
             this.Player1 = player1;
             this.Player2 = player2;
+            this.isGameOver = false;
         }
 
         private Player Player1 { get; set; }
@@ -22,7 +25,17 @@
         public void Start(Player currentPlayer)
         {
             this.PrintField(currentPlayer.Field);
-            this.UpdateGame(currentPlayer);
+
+            while (!isGameOver)
+            {
+                this.UpdateGame(currentPlayer);
+                if (!isGameOver)
+                {
+                    currentPlayer = this.ChangePlayer(currentPlayer);                    
+                }
+            }
+
+            ConsoleOutput.WinningMessage(currentPlayer.Name, currentPlayer.ShotCount);
         }
 
         private void PrintField(Field field)
@@ -32,23 +45,26 @@
 
         private void UpdateGame(Player currentPlayer)
         {
-            var numberOfBombs = currentPlayer.Field.NumberOfBombs;
-            var field = currentPlayer.Field.Grid;
-
-            while (numberOfBombs > 0)
+            while (true)
             {
+                var field = currentPlayer.Field.Grid;
                 ConsoleOutput.Print(string.Format("{0} on turn", currentPlayer.Name));
                 var minesDetonated = currentPlayer.TakeAShot(field);
-                numberOfBombs -= minesDetonated;
+                currentPlayer.NumberOfBombs -= minesDetonated;
                 ConsoleOutput.Print(currentPlayer.Field.ToString());
                 ConsoleOutput.PrintRoundSummary(minesDetonated);
                 currentPlayer.ShotCount++;
 
-                if (numberOfBombs > 0 && minesDetonated < 1)
+                if (currentPlayer.NumberOfBombs == 0)
                 {
-                    currentPlayer = this.ChangePlayer(currentPlayer);
-                    this.UpdateGame(currentPlayer);
+                    this.isGameOver = true;
+                    break;
                 }
+                if (minesDetonated == 0)
+                {
+                    break;
+                }
+
                 // TODO
                 // here more logic for conditions for bonuses and changing players
                 // if sth - no break - current player continues
@@ -56,15 +72,11 @@
                 // else sth else - break and swap players
                 // else .......
             }
-
-
-
-            ConsoleOutput.WinningMessage(currentPlayer.Name, currentPlayer.ShotCount);
         }
 
         private Player ChangePlayer(Player currentPlayer)
         {
-            return currentPlayer == this.Player1 ? Player2 : Player1;
+            return currentPlayer == this.Player1 ? this.Player2 : this.Player1;
         }
     }
 }

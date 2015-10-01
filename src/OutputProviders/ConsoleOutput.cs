@@ -11,7 +11,7 @@
 
         public static void WinningMessage(string player, int numberOfShots)
         {
-            Console.WriteLine("Game over! {0} WINS!!!\nNumber of shots made:{1}", player, numberOfShots);
+            Console.WriteLine("Game over! {0} WINS!!!\nNumber of shots made: {1}", player, numberOfShots);
         }
 
         public static void PrintRoundSummary(int minesDetonated)

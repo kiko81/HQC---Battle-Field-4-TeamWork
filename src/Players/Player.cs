@@ -13,8 +13,11 @@
         {
             this.Name = name;
             this.Field = field;
+            this.NumberOfBombs = field.NumberOfBombs;
             this.ShotCount = 0;
         }
+
+        public int NumberOfBombs { get; set; }
 
         public Field Field { get; private set; }
 
