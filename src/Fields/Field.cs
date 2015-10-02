@@ -29,7 +29,7 @@
             // horizontal indexing
             for (int col = 0; col < this.Size; col++)
             {
-                playField.AppendFormat(" {0}", col + 1);
+                playField.AppendFormat(" {0}", (char)(col + 'A'));
             }
 
             playField.AppendLine();

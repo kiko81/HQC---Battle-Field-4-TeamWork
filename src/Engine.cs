@@ -1,10 +1,7 @@
 ﻿namespace BattleField
 {
-    using System;
-
     using Fields;
     using OutputProviders;
-
     using Players;
 
     public class Engine
@@ -24,12 +21,12 @@
 
         public void Start(Player currentPlayer)
         {
-            this.PrintField(currentPlayer.Field);
-
-            while (!isGameOver)
+            while (!this.isGameOver)
             {
+                this.PrintField(currentPlayer.Field);
                 this.UpdateGame(currentPlayer);
-                if (!isGameOver)
+
+                if (!this.isGameOver)
                 {
                     currentPlayer = this.ChangePlayer(currentPlayer);                    
                 }
@@ -47,22 +44,25 @@
         {
             while (true)
             {
-                var field = currentPlayer.Field.Grid;
                 ConsoleOutput.Print(string.Format("{0} on turn", currentPlayer.Name));
+
+                var field = currentPlayer.Field.Grid;
                 var minesDetonated = currentPlayer.TakeAShot(field);
+                currentPlayer.ShotCount++;
                 currentPlayer.NumberOfBombs -= minesDetonated;
+
                 ConsoleOutput.Print(currentPlayer.Field.ToString());
                 ConsoleOutput.PrintRoundSummary(minesDetonated);
-                currentPlayer.ShotCount++;
 
                 if (currentPlayer.NumberOfBombs == 0)
                 {
                     this.isGameOver = true;
-                    break;
+                    return;
                 }
+
                 if (minesDetonated == 0)
                 {
-                    break;
+                    return;
                 }
 
                 // TODO

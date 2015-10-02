@@ -38,9 +38,10 @@
 
                 if (coordinates.Length == 2)
                 {
-                    if (int.TryParse(coordinates[0], out y))
+                    var xCoordinate = coordinates[0].ToUpper()[0];
+                    if (coordinates[0].Length == 1 && Char.IsLetter(xCoordinate))
                     {
-                        y -= 1;
+                        y = xCoordinate - 'A';
                     }
                     else
                     {
@@ -63,7 +64,7 @@
 
                     if (rowOutOfBounds || colOutOfBounds)
                     {
-                        Console.WriteLine("Invalid target! Shot out of field");
+                        Console.WriteLine("Invalid target! Shot out of bounds");
                     }
                     else
                     {

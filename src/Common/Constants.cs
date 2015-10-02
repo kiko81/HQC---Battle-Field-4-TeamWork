@@ -1,5 +1,7 @@
 ﻿namespace BattleField.Common
 {
+    using System.Threading;
+
     public static class Constants
     {
         public const int EmptyCell = 0;
@@ -10,7 +12,7 @@
         public const int DetonationSpot = 1;
 
         public const int MinFieldSize = 5;
-        public const int MaxFieldSize = 10;
+        public const int MaxFieldSize = 20;
         public const int MinimumPercentageOfBombs = 15;
 
         public static readonly int[,] NoBomb =
