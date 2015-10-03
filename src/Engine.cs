@@ -72,8 +72,6 @@
                 // else sth else - break and swap players
                 // else .......
             }
-
-
         }
 
         private Player ChangePlayer(Player currentPlayer)

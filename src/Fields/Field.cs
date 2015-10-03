@@ -3,7 +3,7 @@
     using System.Text;
 
     using Common;
-    using GameObjects;
+    using GameObjects.Handlers;
 
     public class Field
     {
@@ -79,13 +79,7 @@
 
         public int Explode(int[,] field, int x, int y)
         {
-            int[,] expl ={
-            { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 }
-        };
+            int[,] expl;
 
             BombTypeHandlerBase bomb1 = new SingleBombHandler();
             BombTypeHandlerBase bomb2 = new DoubleBombHandler();

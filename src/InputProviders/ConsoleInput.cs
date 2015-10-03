@@ -32,7 +32,6 @@
                 Console.Write("Please enter X and Y coordinates (e.g. a1): ");
                 string input = Console.ReadLine().Trim();
 
-
                 if (input.Length == 2 || input.Length == 3)
                 {
                     var xCoordinate = char.ToUpper(input[0]);
