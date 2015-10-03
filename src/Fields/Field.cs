@@ -56,13 +56,16 @@
                     char symbol;
                     switch (this.Grid[row, col])
                     {
-                        case Constants.EmptyCell: symbol = '-'; 
+                        case Constants.EmptyCell:
+                            symbol = '-';
                             break;
-                        case Constants.DetonatedCell: symbol = 'X'; 
+                        case Constants.DetonatedCell:
+                            symbol = 'X';
                             break;
-                        default: symbol = (char)('0' + this.Grid[row, col]); 
+                        default:
+                            symbol = (char)('0' + this.Grid[row, col]);
                             break;
-                        //default: symbol = '-'; break;
+                            //default: symbol = '-'; break;
                     }
 
                     playField.AppendFormat("{0} ", symbol);
@@ -76,24 +79,26 @@
 
         public int Explode(int[,] field, int x, int y)
         {
-            int[,] expl;
+            int[,] expl ={
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 1, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 }
+        };
 
-            // gets the type of bomb - will be reworked to chain of responsibility
-            switch (field[x, y]) 
-            {
-                case 1: expl = new SingleBomb().Explosion; 
-                    break;
-                case 2: expl = new DoubleBomb().Explosion; 
-                    break;
-                case 3: expl = new TripleBomb().Explosion; 
-                    break;
-                case 4: expl = new QuadBomb().Explosion; 
-                    break;
-                case 5: expl = new QuintBomb().Explosion; 
-                    break;
-                default: expl = new NoBomb().Explosion; 
-                    break;
-            }
+            BombTypeHandlerBase bomb1 = new SingleBombHandler();
+            BombTypeHandlerBase bomb2 = new DoubleBombHandler();
+            BombTypeHandlerBase bomb3 = new TripleBombHandler();
+            BombTypeHandlerBase bomb4 = new QuadBombHandler();
+            BombTypeHandlerBase bomb5 = new QuintBombHandler();
+
+            bomb1.SetSuccessor(bomb2);
+            bomb2.SetSuccessor(bomb3);
+            bomb3.SetSuccessor(bomb4);
+            bomb4.SetSuccessor(bomb5);
+
+            bomb1.HandleBombType(field[x, y], out expl);
 
             // bomb explodes
             var minesExplodedThisRound = 0;

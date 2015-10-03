@@ -46,7 +46,13 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\RandomUtils.cs" />
     <Compile Include="Engine.cs" />
+    <Compile Include="Fields\BombTypeHandlerBase.cs" />
+    <Compile Include="Fields\QuintBombHandler.cs" />
+    <Compile Include="Fields\QuadBombHandler.cs" />
+    <Compile Include="Fields\TripleBombHandler.cs" />
     <Compile Include="Fields\Field.cs" />
+    <Compile Include="Fields\DoubleBombHandler.cs" />
+    <Compile Include="Fields\SingleBombHandler.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameObjects\DoubleBomb.cs" />
     <Compile Include="GameObjects\Bomb.cs" />
