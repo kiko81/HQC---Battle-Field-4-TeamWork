@@ -8,9 +8,9 @@
             {
                 result = new DoubleBomb().Explosion;
             }
-            else if (this.successor != null)
+            else if (this.Successor != null)
             {
-                successor.HandleBombType(bombType, out result);
+                this.Successor.HandleBombType(bombType, out result);
             }
             else
             {

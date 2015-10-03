@@ -27,7 +27,7 @@
             playField.Append("  ");
 
             // horizontal indexing
-            for (int col = 0; col < this.Size; col++)
+            for (var col = 0; col < this.Size; col++)
             {
                 playField.AppendFormat(" {0}", (char)(col + 'A'));
             }
@@ -38,7 +38,7 @@
             playField.Append("  ".PadRight((this.Size + 1) * 2, '-'));
             playField.AppendLine();
 
-            for (int row = 0; row < this.Size; row++)
+            for (var row = 0; row < this.Size; row++)
             {
                 // vertical indexing and splitting
                 if (row < 9)
@@ -51,7 +51,7 @@
                 }
 
                 // the field itself
-                for (int col = 0; col < this.Size; col++)
+                for (var col = 0; col < this.Size; col++)
                 {
                     char symbol;
                     switch (this.Grid[row, col])

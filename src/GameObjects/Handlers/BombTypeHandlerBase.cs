@@ -2,7 +2,13 @@
 {
     public abstract class BombTypeHandlerBase
     {
-        protected BombTypeHandlerBase successor;
+        private BombTypeHandlerBase successor;
+
+        public BombTypeHandlerBase Successor
+        {
+            get { return this.successor; }
+            private set { this.successor = value; }
+        }
 
         public abstract void HandleBombType(int bombType, out int[,] result);
 
