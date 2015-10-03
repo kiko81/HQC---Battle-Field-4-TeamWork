@@ -35,7 +35,7 @@
             playField.AppendLine();
 
             // horizontal split
-            playField.Append("  ".PadRight(((this.Size + 1) * 2) + 1, '-'));
+            playField.Append("  ".PadRight((this.Size + 1) * 2, '-'));
             playField.AppendLine();
 
             for (int row = 0; row < this.Size; row++)
