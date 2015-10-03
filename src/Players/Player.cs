@@ -1,7 +1,6 @@
 ﻿namespace BattleField.Players
 {
     using Fields;
-
     using InputProviders;
 
     public class Player
@@ -21,6 +20,8 @@
 
         public Field Field { get; private set; }
 
+        public bool ChainReactionEnabled { get; set; }
+
         public string Name
         {
             get { return this.name; }
@@ -33,14 +34,23 @@
             set { this.shotCount = value; }
         }
 
-        public int TakeAShot(int[,] field)
+        public int TakeAShot()
         {
             int x;
             int y;
 
-            ConsoleInput.GetTargetCoordinates(this.Field.Size, out x, out y);
+            ConsoleInput.GetTargetCoordinates(Field.Size, out x, out y);
 
-            var bombsDetonated = this.Field.Explode(field, x, y);
+            var bombsDetonated = Field.Explode(x, y);
+
+            var chainedMines = 0;
+            if (this.ChainReactionEnabled)
+            {
+                this.ChainReactionEnabled = false;
+                chainedMines += this.Field.ChainReact();
+            }
+
+            bombsDetonated += chainedMines;
 
             return bombsDetonated;
         }

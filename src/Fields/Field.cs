@@ -1,5 +1,6 @@
 ﻿namespace BattleField.Fields
 {
+    using System;
     using System.Text;
 
     using Common;
@@ -17,9 +18,9 @@
 
         public int NumberOfBombs { get; private set; }
 
-        public int[,] Grid { get; private set; }
-
         public int Size { get; private set; }
+
+        private int[,] Grid { get; set; }
 
         public override string ToString()
         {
@@ -60,12 +61,12 @@
                             symbol = '-';
                             break;
                         case Constants.DetonatedCell:
-                            symbol = 'X';
+                            symbol = 'x';
                             break;
                         default:
                             symbol = (char)('0' + this.Grid[row, col]);
                             break;
-                            //default: symbol = '-'; break;
+                            ////default: symbol = '-'; break;
                     }
 
                     playField.AppendFormat("{0} ", symbol);
@@ -77,7 +78,7 @@
             return playField.ToString();
         }
 
-        public int Explode(int[,] field, int x, int y)
+        public int Explode(int x, int y)
         {
             int[,] expl;
 
@@ -92,25 +93,25 @@
             bomb3.SetSuccessor(bomb4);
             bomb4.SetSuccessor(bomb5);
 
-            bomb1.HandleBombType(field[x, y], out expl);
+            bomb1.HandleBombType(this.Grid[x, y], out expl);
 
             // bomb explodes
             var minesExplodedThisRound = 0;
 
-            for (int i = Constants.BombDownLeftRange; i <= Constants.BombUpRightRange; i++)
+            for (var i = Constants.BombDownLeftRange; i <= Constants.BombUpRightRange; i++)
             {
-                for (int j = Constants.BombDownLeftRange; j <= Constants.BombUpRightRange; j++)
+                for (var j = Constants.BombDownLeftRange; j <= Constants.BombUpRightRange; j++)
                 {
                     if (x + i >= 0 && x + i < this.Size && y + j >= 0 && y + j < this.Size)
                     {
                         if (expl[i + 2, j + 2] == Constants.DetonationSpot)
                         {
-                            if (field[x + i, y + j] > 0)
+                            if (this.Grid[x + i, y + j] > 0)
                             {
                                 minesExplodedThisRound++;
                             }
 
-                            field[x + i, y + j] = Constants.DetonatedCell;
+                            this.Grid[x + i, y + j] = Constants.DetonatedCell;
                         }
                     }
                 }
@@ -134,6 +135,11 @@
 
                 this.Grid[x, y] = RandomUtils.GenerateRandomNumber(1, 6);
             }
+        }
+
+        public int ChainReact()
+        {
+            throw new NotImplementedException();
         }
     }
 }

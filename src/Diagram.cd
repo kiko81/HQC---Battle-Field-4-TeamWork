@@ -105,47 +105,5 @@
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BombTypeHandlerBase">
-    <Position X="2.5" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAAEAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Fields\BombTypeHandlerBase.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DoubleBombHandler" Collapsed="true">
-    <Position X="4.25" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Fields\DoubleBombHandler.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="QuadBombHandler" Collapsed="true">
-    <Position X="4.25" Y="7.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Fields\QuadBombHandler.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="QuintBombHandler" Collapsed="true">
-    <Position X="4.25" Y="8.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Fields\QuintBombHandler.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SingleBombHandler" Collapsed="true">
-    <Position X="4.25" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Fields\SingleBombHandler.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="TripleBombHandler" Collapsed="true">
-    <Position X="4.25" Y="7" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Fields\TripleBombHandler.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

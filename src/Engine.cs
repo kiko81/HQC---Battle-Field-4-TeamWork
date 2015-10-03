@@ -46,8 +46,8 @@
         {
             while (true)
             {
-                var field = currentPlayer.Field.Grid;
-                var minesDetonated = currentPlayer.TakeAShot(field);
+                var minesDetonated = currentPlayer.TakeAShot();
+
                 currentPlayer.ShotCount++;
                 currentPlayer.NumberOfBombs -= minesDetonated;
 
