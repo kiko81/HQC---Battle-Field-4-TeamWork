@@ -1,7 +1,5 @@
 ﻿namespace BattleField.Common
 {
-    using System.Threading;
-
     public static class Constants
     {
         public const int EmptyCell = 0;

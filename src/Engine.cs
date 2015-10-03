@@ -23,6 +23,8 @@
         {
             while (!this.isGameOver)
             {
+                ConsoleOutput.Print(string.Format("\n-#- {0}'s turn -#-", currentPlayer.Name));
+
                 this.PrintField(currentPlayer.Field);
                 this.UpdateGame(currentPlayer);
 
@@ -44,8 +46,6 @@
         {
             while (true)
             {
-                ConsoleOutput.Print(string.Format("{0} on turn", currentPlayer.Name));
-
                 var field = currentPlayer.Field.Grid;
                 var minesDetonated = currentPlayer.TakeAShot(field);
                 currentPlayer.ShotCount++;
@@ -72,6 +72,8 @@
                 // else sth else - break and swap players
                 // else .......
             }
+
+
         }
 
         private Player ChangePlayer(Player currentPlayer)

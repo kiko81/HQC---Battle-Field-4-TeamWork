@@ -1,7 +1,6 @@
 ﻿namespace BattleField.InputProviders
 {
     using System;
-    using System.Linq;
 
     using Common;
 
@@ -22,26 +21,24 @@
             return fieldSize;
         }
 
-        public static void GetTargetCoordinates(int size, out int x, out int y)
+        public static void GetTargetCoordinates(int size, out int col, out int row)
         {
-            x = 0;
-            y = 0;
+            col = 0;
+            row = 0;
             bool isValidPosition = false;
 
             while (!isValidPosition) 
             {
-                Console.Write("Please enter X and Y coordinates separated by space: ");
-                string input = Console.ReadLine();
-                var coordinates = input.Split(' ')
-                    .Where(entry => !string.IsNullOrEmpty(entry))
-                    .ToArray();
+                Console.Write("Please enter X and Y coordinates (e.g. a1): ");
+                string input = Console.ReadLine().Trim();
 
-                if (coordinates.Length == 2)
+
+                if (input.Length == 2 || input.Length == 3)
                 {
-                    var xCoordinate = coordinates[0].ToUpper()[0];
-                    if (coordinates[0].Length == 1 && Char.IsLetter(xCoordinate))
+                    var xCoordinate = char.ToUpper(input[0]);
+                    if (char.IsLetter(xCoordinate))
                     {
-                        y = xCoordinate - 'A';
+                        row = xCoordinate - 'A';
                     }
                     else
                     {
@@ -49,9 +46,9 @@
                         continue;
                     }
 
-                    if (int.TryParse(coordinates[1], out x))
+                    if (int.TryParse(input.Substring(1), out col))
                     {
-                        x -= 1;
+                        col -= 1;
                     }
                     else
                     {
@@ -59,8 +56,8 @@
                         continue;
                     }
                     
-                    bool rowOutOfBounds = x < 0 || size <= x;
-                    bool colOutOfBounds = y < 0 || size <= y;
+                    var rowOutOfBounds = col < 0 || size <= col;
+                    var colOutOfBounds = row < 0 || size <= row;
 
                     if (rowOutOfBounds || colOutOfBounds)
                     {
