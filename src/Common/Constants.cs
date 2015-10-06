@@ -40,6 +40,33 @@
             { 0, 0, 0, 0, 0 }
         };
 
+        public static readonly int[,] XBomb = 
+        {
+            { 1, 0, 0, 0, 1 },
+            { 0, 1, 1, 1, 0 },
+            { 0, 1, 1, 1, 0 },
+            { 0, 1, 1, 1, 0 },
+            { 1, 0, 0, 0, 1 }
+        };
+
+        public static readonly int[,] VerticalBomb =
+        {
+            { 0, 1, 1, 1, 0 },
+            { 0, 1, 1, 1, 0 },
+            { 0, 1, 1, 1, 0 },
+            { 0, 1, 1, 1, 0 },
+            { 0, 1, 1, 1, 0 }
+        };
+
+        public static readonly int[,] HorizontalBomb =
+        {
+            { 0, 0, 0, 0, 0 },
+            { 1, 1, 1, 1, 1 },
+            { 1, 1, 1, 1, 1 },
+            { 1, 1, 1, 1, 1 },
+            { 0, 0, 0, 0, 0 }
+        };
+
         public static readonly int[,] TripleBomb =
         {
             { 0, 0, 1, 0, 0 },

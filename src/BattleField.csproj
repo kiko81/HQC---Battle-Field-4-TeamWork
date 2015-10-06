@@ -56,11 +56,14 @@
     <Compile Include="Game.cs" />
     <Compile Include="GameObjects\DoubleBomb.cs" />
     <Compile Include="GameObjects\Bomb.cs" />
+    <Compile Include="GameObjects\HorizontalBomb.cs" />
     <Compile Include="GameObjects\NoBomb.cs" />
     <Compile Include="GameObjects\QuadBomb.cs" />
     <Compile Include="GameObjects\QuintBomb.cs" />
     <Compile Include="GameObjects\SingleBomb.cs" />
     <Compile Include="GameObjects\TripleBomb.cs" />
+    <Compile Include="GameObjects\VerticalBomb.cs" />
+    <Compile Include="GameObjects\XBomb.cs" />
     <Compile Include="InputProviders\ConsoleInput.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="OutputProviders\ConsoleOutput.cs" />
