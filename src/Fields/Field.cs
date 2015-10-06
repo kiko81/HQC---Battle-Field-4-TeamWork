@@ -87,11 +87,17 @@
             BombTypeHandlerBase bomb3 = new TripleBombHandler();
             BombTypeHandlerBase bomb4 = new QuadBombHandler();
             BombTypeHandlerBase bomb5 = new QuintBombHandler();
+            BombTypeHandlerBase bomb6 = new XBombHandler();
+            BombTypeHandlerBase bomb7 = new VerticalBombHandler();
+            BombTypeHandlerBase bomb8 = new HorizontalBombHandler();
 
             bomb1.SetSuccessor(bomb2);
             bomb2.SetSuccessor(bomb3);
             bomb3.SetSuccessor(bomb4);
             bomb4.SetSuccessor(bomb5);
+            bomb5.SetSuccessor(bomb6);
+            bomb6.SetSuccessor(bomb7);
+            bomb7.SetSuccessor(bomb8);
 
             bomb1.HandleBombType(this.Grid[x, y], out expl);
 

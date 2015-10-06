@@ -47,6 +47,7 @@
     <Compile Include="Common\RandomUtils.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="GameObjects\Handlers\BombTypeHandlerBase.cs" />
+    <Compile Include="GameObjects\Handlers\HorizontalBombHandler.cs" />
     <Compile Include="GameObjects\Handlers\QuintBombHandler.cs" />
     <Compile Include="GameObjects\Handlers\QuadBombHandler.cs" />
     <Compile Include="GameObjects\Handlers\TripleBombHandler.cs" />
@@ -56,6 +57,8 @@
     <Compile Include="Game.cs" />
     <Compile Include="GameObjects\DoubleBomb.cs" />
     <Compile Include="GameObjects\Bomb.cs" />
+    <Compile Include="GameObjects\Handlers\VerticalBombHandler.cs" />
+    <Compile Include="GameObjects\Handlers\XBombHandler.cs" />
     <Compile Include="GameObjects\HorizontalBomb.cs" />
     <Compile Include="GameObjects\NoBomb.cs" />
     <Compile Include="GameObjects\QuadBomb.cs" />
