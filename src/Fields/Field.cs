@@ -139,7 +139,7 @@
                     y = RandomUtils.GenerateRandomNumber(0, this.Size);
                 }
 
-                this.Grid[x, y] = RandomUtils.GenerateRandomNumber(1, 6);
+                this.Grid[x, y] = RandomUtils.GenerateRandomNumber(1, 9);
             }
         }
 
