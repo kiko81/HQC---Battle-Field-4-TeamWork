@@ -1,9 +1,11 @@
 ﻿namespace BattleField.Fields
 {
-    using System;
+    using System.Collections.Generic;
     using System.Text;
 
     using Common;
+
+    using GameObjects;
     using GameObjects.Handlers;
 
     public class Field
@@ -11,16 +13,20 @@
         public Field(int size, int numberOfBombs)
         {
             this.Size = size;
-            this.Grid = new int[size, size];
+            this.Grid = new Cell[size, size];
+            FillFieldWithEmptyCells();
             this.NumberOfBombs = numberOfBombs;
             this.PlaceBombs(numberOfBombs);
+            this.ChainedMines = new List<Cell>();
         }
+
+        private List<Cell> ChainedMines { get; set; }
 
         public int NumberOfBombs { get; private set; }
 
         public int Size { get; private set; }
 
-        private int[,] Grid { get; set; }
+        private Cell[,] Grid { get; set; }
 
         public override string ToString()
         {
@@ -55,7 +61,7 @@
                 for (var col = 0; col < this.Size; col++)
                 {
                     char symbol;
-                    switch (this.Grid[row, col])
+                    switch (this.Grid[row, col].Value)
                     {
                         case Constants.EmptyCell:
                             symbol = '-';
@@ -64,9 +70,9 @@
                             symbol = 'x';
                             break;
                         default:
-                            symbol = (char)('0' + this.Grid[row, col]);
+                            symbol = (char)('0' + this.Grid[row, col].Value);
                             break;
-                            ////default: symbol = '-'; break;
+                            //default: symbol = '-'; break;
                     }
 
                     playField.AppendFormat("{0} ", symbol);
@@ -78,7 +84,7 @@
             return playField.ToString();
         }
 
-        public int Explode(int x, int y)
+        public int Explode(int x, int y, bool chainEnabled)
         {
             BombHandler bomb1 = new SingleBombHandler();
             BombHandler bomb2 = new DoubleBombHandler();
@@ -97,9 +103,9 @@
             bomb6.SetSuccessor(bomb7);
             bomb7.SetSuccessor(bomb8);
 
-            int[,] explosion;
+            int[,] expl;
 
-            bomb1.HandleBombType(this.Grid[x, y], out explosion);
+            bomb1.HandleBombType(this.Grid[x, y].Value, out expl);
 
             // bomb explodes
             var minesExplodedThisRound = 0;
@@ -110,25 +116,27 @@
                 {
                     if (x + i >= 0 && x + i < this.Size && y + j >= 0 && y + j < this.Size)
                     {
-                        if (explosion[i + 2, j + 2] == Constants.DetonationSpot)
+                        if (expl[i + 2, j + 2] == Constants.DetonationSpot)
                         {
-                            if (this.Grid[x + i, y + j] > 0)
+                            if (this.Grid[x + i, y + j].Value > 0)
                             {
+                                if (chainEnabled)
+                                {
+                                    // Fills array with cells and skips changing the grid - lefts the changes to chain reactions
+                                    ChainedMines.Add(new Cell(new Coordinates(x + i, y + j)));
+                                    continue;
+                                }
+
                                 minesExplodedThisRound++;
                             }
 
-                            this.Grid[x + i, y + j] = Constants.DetonatedCell;
+                            this.Grid[x + i, y + j].Value = Constants.DetonatedCell;
                         }
                     }
                 }
             }
 
             return minesExplodedThisRound;
-        }
-
-        public int ChainReact()
-        {
-            throw new NotImplementedException();
         }
 
         private void PlaceBombs(int mineNumber)
@@ -138,16 +146,37 @@
                 var x = RandomUtils.GenerateRandomNumber(0, this.Size);
                 var y = RandomUtils.GenerateRandomNumber(0, this.Size);
 
-                while (this.Grid[x, y] != 0)
+                while (this.Grid[x, y].Value != 0)
                 {
                     x = RandomUtils.GenerateRandomNumber(0, this.Size);
                     y = RandomUtils.GenerateRandomNumber(0, this.Size);
                 }
 
-                this.Grid[x, y] = RandomUtils.GenerateRandomNumber(1, Constants.KindsOfBombs);
+                this.Grid[x, y].Value = RandomUtils.GenerateRandomNumber(1, Constants.KindsOfBombs);
             }
         }
 
-        
+        private void FillFieldWithEmptyCells()
+        {
+            for (int row = 0; row < this.Size; row++)
+            {
+                for (int col = 0; col < this.Size; col++)
+                {
+                    this.Grid[row, col] = new Cell(new Coordinates(row, col));
+                }
+            }
+        }
+
+        public int ChainReact()
+        {
+            var minesExplodedThisRound = 0;
+
+            foreach (var chainedMine in this.ChainedMines)
+            {
+                //minesExplodedThisRound += Explode(chainedMine.X, chainedMine.Y, false);
+            }
+
+            return minesExplodedThisRound;
+        }
     }
 }

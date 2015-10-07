@@ -41,16 +41,13 @@
 
             ConsoleInput.GetTargetCoordinates(Field.Size, out x, out y);
 
-            var bombsDetonated = Field.Explode(x, y);
+            var bombsDetonated = Field.Explode(x, y, this.ChainReactionEnabled);
 
-            var chainedMines = 0;
             if (this.ChainReactionEnabled)
             {
                 this.ChainReactionEnabled = false;
-                chainedMines += Field.ChainReact();
+                bombsDetonated += Field.ChainReact();
             }
-
-            bombsDetonated += chainedMines;
 
             return bombsDetonated;
         }
