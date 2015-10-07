@@ -97,9 +97,9 @@
             bomb6.SetSuccessor(bomb7);
             bomb7.SetSuccessor(bomb8);
 
-            int[,] expl;
+            int[,] explosion;
 
-            bomb1.HandleBombType(this.Grid[x, y], out expl);
+            bomb1.HandleBombType(this.Grid[x, y], out explosion);
 
             // bomb explodes
             var minesExplodedThisRound = 0;
@@ -110,7 +110,7 @@
                 {
                     if (x + i >= 0 && x + i < this.Size && y + j >= 0 && y + j < this.Size)
                     {
-                        if (expl[i + 2, j + 2] == Constants.DetonationSpot)
+                        if (explosion[i + 2, j + 2] == Constants.DetonationSpot)
                         {
                             if (this.Grid[x + i, y + j] > 0)
                             {
@@ -124,6 +124,11 @@
             }
 
             return minesExplodedThisRound;
+        }
+
+        public int ChainReact()
+        {
+            throw new NotImplementedException();
         }
 
         private void PlaceBombs(int mineNumber)
@@ -143,9 +148,6 @@
             }
         }
 
-        public int ChainReact()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
