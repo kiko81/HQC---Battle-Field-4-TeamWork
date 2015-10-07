@@ -80,16 +80,14 @@
 
         public int Explode(int x, int y)
         {
-            int[,] expl;
-
-            BombTypeHandlerBase bomb1 = new SingleBombHandler();
-            BombTypeHandlerBase bomb2 = new DoubleBombHandler();
-            BombTypeHandlerBase bomb3 = new TripleBombHandler();
-            BombTypeHandlerBase bomb4 = new QuadBombHandler();
-            BombTypeHandlerBase bomb5 = new QuintBombHandler();
-            BombTypeHandlerBase bomb6 = new XBombHandler();
-            BombTypeHandlerBase bomb7 = new VerticalBombHandler();
-            BombTypeHandlerBase bomb8 = new HorizontalBombHandler();
+            BombHandler bomb1 = new SingleBombHandler();
+            BombHandler bomb2 = new DoubleBombHandler();
+            BombHandler bomb3 = new TripleBombHandler();
+            BombHandler bomb4 = new QuadBombHandler();
+            BombHandler bomb5 = new QuintBombHandler();
+            BombHandler bomb6 = new XBombHandler();
+            BombHandler bomb7 = new VerticalBombHandler();
+            BombHandler bomb8 = new HorizontalBombHandler();
 
             bomb1.SetSuccessor(bomb2);
             bomb2.SetSuccessor(bomb3);
@@ -98,6 +96,8 @@
             bomb5.SetSuccessor(bomb6);
             bomb6.SetSuccessor(bomb7);
             bomb7.SetSuccessor(bomb8);
+
+            int[,] expl;
 
             bomb1.HandleBombType(this.Grid[x, y], out expl);
 
@@ -128,10 +128,10 @@
 
         private void PlaceBombs(int mineNumber)
         {
-            for (int i = 0; i < mineNumber; i++)
+            for (var i = 0; i < mineNumber; i++)
             {
-                int x = RandomUtils.GenerateRandomNumber(0, this.Size);
-                int y = RandomUtils.GenerateRandomNumber(0, this.Size);
+                var x = RandomUtils.GenerateRandomNumber(0, this.Size);
+                var y = RandomUtils.GenerateRandomNumber(0, this.Size);
 
                 while (this.Grid[x, y] != 0)
                 {
@@ -139,7 +139,7 @@
                     y = RandomUtils.GenerateRandomNumber(0, this.Size);
                 }
 
-                this.Grid[x, y] = RandomUtils.GenerateRandomNumber(1, 9);
+                this.Grid[x, y] = RandomUtils.GenerateRandomNumber(1, Constants.KindsOfBombs);
             }
         }
 

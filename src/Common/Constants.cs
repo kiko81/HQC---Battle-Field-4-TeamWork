@@ -12,6 +12,9 @@
         public const int MinFieldSize = 5;
         public const int MaxFieldSize = 20;
         public const int MinimumPercentageOfBombs = 15;
+        public const int KindsOfBombs = 9;
+
+
 
         public static readonly int[,] NoBomb =
         {
@@ -70,28 +73,28 @@
         public static readonly int[,] XBomb = 
         {
             { 1, 0, 0, 0, 1 },
-            { 0, 1, 1, 1, 0 },
-            { 0, 1, 1, 1, 0 },
-            { 0, 1, 1, 1, 0 },
+            { 0, 1, 0, 1, 0 },
+            { 0, 0, 1, 0, 0 },
+            { 0, 1, 0, 1, 0 },
             { 1, 0, 0, 0, 1 }
         };
 
         public static readonly int[,] VerticalBomb =
         {
+            { 1, 1, 0, 1, 1 },
             { 0, 1, 1, 1, 0 },
+            { 0, 0, 1, 0, 0 },
             { 0, 1, 1, 1, 0 },
-            { 0, 1, 1, 1, 0 },
-            { 0, 1, 1, 1, 0 },
-            { 0, 1, 1, 1, 0 }
+            { 1, 1, 0, 1, 1 }
         };
 
         public static readonly int[,] HorizontalBomb =
         {
-            { 0, 0, 0, 0, 0 },
-            { 1, 1, 1, 1, 1 },
-            { 1, 1, 1, 1, 1 },
-            { 1, 1, 1, 1, 1 },
-            { 0, 0, 0, 0, 0 }
+            { 1, 0, 0, 0, 1 },
+            { 1, 1, 0, 1, 1 },
+            { 0, 1, 1, 1, 0 },
+            { 1, 1, 0, 1, 1 },
+            { 1, 0, 0, 0, 1 }
         };
     }
 }

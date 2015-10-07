@@ -65,6 +65,8 @@
                     return;
                 }
 
+                ConsoleOutput.Print(string.Format("\n-#- {0}'s turn -#-", currentPlayer.Name));
+
                 // TODO
                 // here more logic for conditions for bonuses and changing players
                 // if sth - no break - current player continues

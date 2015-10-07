@@ -1,6 +1,6 @@
 ﻿namespace BattleField.GameObjects.Handlers
 {
-    public class HorizontalBombHandler : BombTypeHandlerBase
+    public class HorizontalBombHandler : BombHandler
     {
         public override void HandleBombType(int bombType, out int[,] result)
         {

@@ -1,10 +1,10 @@
 ﻿namespace BattleField.GameObjects.Handlers
 {
-    public abstract class BombTypeHandlerBase
+    public abstract class BombHandler
     {
-        private BombTypeHandlerBase successor;
+        private BombHandler successor;
 
-        public BombTypeHandlerBase Successor
+        protected BombHandler Successor
         {
             get { return this.successor; }
             private set { this.successor = value; }
@@ -12,9 +12,9 @@
 
         public abstract void HandleBombType(int bombType, out int[,] result);
 
-        public void SetSuccessor(BombTypeHandlerBase successor)
+        public void SetSuccessor(BombHandler nextType)
         {
-            this.successor = successor;
+            this.successor = nextType;
         }
     }
 }

@@ -46,7 +46,7 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\RandomUtils.cs" />
     <Compile Include="Engine.cs" />
-    <Compile Include="GameObjects\Handlers\BombTypeHandlerBase.cs" />
+    <Compile Include="GameObjects\Handlers\BombHandler.cs" />
     <Compile Include="GameObjects\Handlers\HorizontalBombHandler.cs" />
     <Compile Include="GameObjects\Handlers\QuintBombHandler.cs" />
     <Compile Include="GameObjects\Handlers\QuadBombHandler.cs" />

@@ -25,12 +25,12 @@
         {
             col = 0;
             row = 0;
-            bool isValidPosition = false;
+            var isValidPosition = false;
 
             while (!isValidPosition) 
             {
                 Console.Write("Please enter X and Y coordinates (e.g. a1): ");
-                string input = Console.ReadLine().Trim();
+                var input = Console.ReadLine().Trim();
 
                 if (input.Length == 2 || input.Length == 3)
                 {

@@ -47,7 +47,7 @@
             if (this.ChainReactionEnabled)
             {
                 this.ChainReactionEnabled = false;
-                chainedMines += this.Field.ChainReact();
+                chainedMines += Field.ChainReact();
             }
 
             bombsDetonated += chainedMines;
