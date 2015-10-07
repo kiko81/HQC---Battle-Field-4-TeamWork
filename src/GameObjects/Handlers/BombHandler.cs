@@ -10,7 +10,6 @@
             private set { this.successor = value; }
         }
 
-        //Check for commit
         public abstract void HandleBombType(int bombType, out int[,] result);
 
         public void SetSuccessor(BombHandler nextType)
