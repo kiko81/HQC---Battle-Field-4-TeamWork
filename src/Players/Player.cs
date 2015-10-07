@@ -43,11 +43,11 @@
 
             var bombsDetonated = Field.Explode(x, y, this.ChainReactionEnabled);
 
-            if (this.ChainReactionEnabled)
-            {
-                this.ChainReactionEnabled = false;
-                bombsDetonated += Field.ChainReact();
-            }
+            //if (this.ChainReactionEnabled)
+            //{
+            //    this.ChainReactionEnabled = false;
+            //    bombsDetonated += Field.ChainReact();
+            //}
 
             return bombsDetonated;
         }

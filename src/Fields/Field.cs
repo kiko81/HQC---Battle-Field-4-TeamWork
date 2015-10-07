@@ -14,19 +14,19 @@
         {
             this.Size = size;
             this.Grid = new Cell[size, size];
-            FillFieldWithEmptyCells();
+            this.FillFieldWithEmptyCells();
             this.NumberOfBombs = numberOfBombs;
             this.PlaceBombs(numberOfBombs);
             this.ChainedMines = new List<Cell>();
         }
-
-        private List<Cell> ChainedMines { get; set; }
 
         public int NumberOfBombs { get; private set; }
 
         public int Size { get; private set; }
 
         private Cell[,] Grid { get; set; }
+
+        private List<Cell> ChainedMines { get; set; }
 
         public override string ToString()
         {
@@ -72,7 +72,7 @@
                         default:
                             symbol = (char)('0' + this.Grid[row, col].Value);
                             break;
-                            //default: symbol = '-'; break;
+                            ////default: symbol = '-'; break;
                     }
 
                     playField.AppendFormat("{0} ", symbol);
@@ -123,7 +123,7 @@
                                 if (chainEnabled)
                                 {
                                     // Fills array with cells and skips changing the grid - lefts the changes to chain reactions
-                                    ChainedMines.Add(new Cell(new Coordinates(x + i, y + j)));
+                                    this.ChainedMines.Add(new Cell(new Coordinates(x + i, y + j)));
                                     continue;
                                 }
 
@@ -173,7 +173,7 @@
 
             foreach (var chainedMine in this.ChainedMines)
             {
-                //minesExplodedThisRound += Explode(chainedMine.X, chainedMine.Y, false);
+                ////minesExplodedThisRound += Explode(chainedMine.X, chainedMine.Y, false);
             }
 
             return minesExplodedThisRound;

@@ -7,9 +7,10 @@
         public Cell(Coordinates coords)
         {
             this.Position = coords;
+            this.Value = Constants.EmptyCell;
         }
 
-        public Coordinates Position { get; set; }
+        private Coordinates Position { get; set; }
 
         public int Value { get; set; }
     }
