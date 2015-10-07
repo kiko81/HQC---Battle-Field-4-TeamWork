@@ -3,7 +3,7 @@
   <Class Name="BattleField.Common.Constants">
     <Position X="0.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BEAIAAAAAAAAAAAAMAABAAAAAAAgADAAgAYAACAAAAA=</HashCode>
+      <HashCode>BEIKAAAAABAAAAAAMAABgAAAAAAgADAAgAYAACAAAAA=</HashCode>
       <FileName>Common\Constants.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -17,7 +17,7 @@
   <Class Name="BattleField.Fields.Field">
     <Position X="7.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAgAAAgAAgAAEAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAABAgAAAgAAgQAEAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Fields\Field.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -103,6 +103,69 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAIQAAAAAAAAAA=</HashCode>
       <FileName>Game.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleField.GameObjects.Handlers.BombHandler">
+    <Position X="2.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAIAAAAAAAEAAAABAAA=</HashCode>
+      <FileName>GameObjects\Handlers\BombHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleField.GameObjects.Handlers.DoubleBombHandler" Collapsed="true">
+    <Position X="4.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Handlers\DoubleBombHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleField.GameObjects.Handlers.HorizontalBombHandler" Collapsed="true">
+    <Position X="0.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Handlers\HorizontalBombHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleField.GameObjects.Handlers.QuadBombHandler" Collapsed="true">
+    <Position X="4.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Handlers\QuadBombHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleField.GameObjects.Handlers.QuintBombHandler" Collapsed="true">
+    <Position X="2.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Handlers\QuintBombHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleField.GameObjects.Handlers.SingleBombHandler" Collapsed="true">
+    <Position X="4.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Handlers\SingleBombHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleField.GameObjects.Handlers.TripleBombHandler" Collapsed="true">
+    <Position X="4.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Handlers\TripleBombHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleField.GameObjects.Handlers.VerticalBombHandler" Collapsed="true">
+    <Position X="0.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Handlers\VerticalBombHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleField.GameObjects.Handlers.XBombHandler" Collapsed="true">
+    <Position X="0.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Handlers\XBombHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
