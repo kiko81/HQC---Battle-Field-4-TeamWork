@@ -2,20 +2,19 @@
 {
     public class QuadBombHandler : BombHandler
     {
-        public override void HandleBombType(int bombType, out int[,] result)
+        public override int[,] HandleBombType(int bombType)
         {
             if (bombType == 4)
             {
-                result = new QuadBomb().Explosion;
+                return new QuadBomb().Explosion;
             }
-            else if (this.Successor != null)
+
+            if (this.Successor != null)
             {
-                this.Successor.HandleBombType(bombType, out result);
+                return this.Successor.HandleBombType(bombType);
             }
-            else
-            {
-                result = new NoBomb().Explosion;
-            }
+
+            return new NoBomb().Explosion;
         }
     }
 }

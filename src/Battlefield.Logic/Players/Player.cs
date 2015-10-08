@@ -1,16 +1,11 @@
-﻿namespace BattleField.Logic.Players
+﻿namespace Battlefield.Logic.Players
 {
-    using System;
-
     using Battlefield.Logic.Contracts;
     using Battlefield.Logic.Fields;
     using Battlefield.Logic.GameObjects;
-    using Battlefield.Logic.InputProviders;
 
     public class Player
     {
-        ////leave it public for future testing
-        public const string StringCannotBeNullOrEmpty = "Name cannot be null or empty!";
         private readonly IInput input;
 
         private string name;
@@ -32,20 +27,9 @@
 
         public string Name
         {
-            get 
-            { 
-                return this.name;
-            }
-            
-            private set 
-            {
-                if (string.IsNullOrEmpty(this.name))
-                {
-                    throw new NullReferenceException(StringCannotBeNullOrEmpty);
-                }
-
-                this.name = value; 
-            }
+            get { return this.name; }
+            // validate name
+            private set { this.name = value; }
         }
 
         public int ShotCount { get; set; }

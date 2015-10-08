@@ -2,20 +2,19 @@
 {
     public class VerticalBombHandler : BombHandler
     {
-        public override void HandleBombType(int bombType, out int[,] result)
+        public override int[,] HandleBombType(int bombType)
         {
             if (bombType == 7)
             {
-                result = new VerticalBomb().Explosion;
+                return new VerticalBomb().Explosion;
             }
-            else if (this.Successor != null)
+
+            if (this.Successor != null)
             {
-                this.Successor.HandleBombType(bombType, out result);
+                return this.Successor.HandleBombType(bombType);
             }
-            else
-            {
-                result = new NoBomb().Explosion;
-            }
+
+            return new NoBomb().Explosion;
         }
     }
 }

@@ -1,16 +1,11 @@
 ﻿namespace Battlefield.Logic
 {
-    using BattleField.Logic.Players;
-
-    using Common;
-
-    using Contracts;
-
-    using Fields;
-
-    using InputProviders;
-
-    using OutputProviders;
+    using Battlefield.Logic.Common;
+    using Battlefield.Logic.Contracts;
+    using Battlefield.Logic.Fields;
+    using Battlefield.Logic.InputProviders;
+    using Battlefield.Logic.OutputProviders;
+    using Battlefield.Logic.Players;
 
     public class Game
     {

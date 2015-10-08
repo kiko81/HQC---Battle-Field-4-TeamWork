@@ -2,7 +2,7 @@
 {
     using System;
 
-    using Common;
+    using Battlefield.Logic.Common;
 
     public class Cell : ICloneable
     {
@@ -16,11 +16,11 @@
 
         public int Value { get; set; }
 
-        ////private object DeepCopy()
-        ////{
+        //private object DeepCopy()
+        //{
         //    var deepCopy = this.MemberwiseClone();
         //    return deepCopy;
-        ////}
+        //}
 
         public object Clone()
         {

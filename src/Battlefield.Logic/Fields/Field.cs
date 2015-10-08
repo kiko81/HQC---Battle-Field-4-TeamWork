@@ -86,33 +86,17 @@
 
         public int Explode(Cell cell, bool chainEnabled)
         {
-            BombHandler bomb1 = new SingleBombHandler();
-            BombHandler bomb2 = new DoubleBombHandler();
-            BombHandler bomb3 = new TripleBombHandler();
-            BombHandler bomb4 = new QuadBombHandler();
-            BombHandler bomb5 = new QuintBombHandler();
-            BombHandler bomb6 = new XBombHandler();
-            BombHandler bomb7 = new VerticalBombHandler();
-            BombHandler bomb8 = new HorizontalBombHandler();
-
-            bomb1.SetSuccessor(bomb2);
-            bomb2.SetSuccessor(bomb3);
-            bomb3.SetSuccessor(bomb4);
-            bomb4.SetSuccessor(bomb5);
-            bomb5.SetSuccessor(bomb6);
-            bomb6.SetSuccessor(bomb7);
-            bomb7.SetSuccessor(bomb8);
-
             var col = cell.Position.Col;
             var row = cell.Position.Row;
-            int[,] explosion;
 
             if (cell.Value == 0)
             {
                 cell.Value = this.Grid[col, row].Value;
             }
 
-            bomb1.HandleBombType(cell.Value, out explosion);
+            var bombChain = BombHandler.SetBombChain();
+
+            var explosion = bombChain.HandleBombType(cell.Value);
 
             // bomb explodes
             var minesExplodedThisRound = 0;

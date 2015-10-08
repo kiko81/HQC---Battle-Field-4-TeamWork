@@ -1,6 +1,6 @@
 ﻿namespace Battlefield.Logic.Contracts
 {
-    using Common;
+    using Battlefield.Logic.Common;
 
     public interface IInput
     {
