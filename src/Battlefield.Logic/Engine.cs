@@ -1,11 +1,10 @@
 ﻿namespace Battlefield.Logic
 {
+    using BattleField.Logic;
+    using BattleField.Logic.Players;
     using Fields;
-
     using OutputProviders;
-
-    using Players;
-
+    
     public class Engine
     {
         private bool isGameOver;
@@ -67,7 +66,7 @@
                     return;
                 }
 
-                //currentPlayer.ChainReactionEnabled = true;
+                ////currentPlayer.ChainReactionEnabled = true;
 
                 ConsoleOutput.Print(string.Format("\n-#- {0}'s turn -#-", currentPlayer.Name));
 

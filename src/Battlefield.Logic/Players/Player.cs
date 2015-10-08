@@ -1,28 +1,16 @@
-<<<<<<< HEAD
-﻿namespace BattleField.Players
+﻿namespace BattleField.Logic.Players
 {
     using System;
 
-    using Fields;
-    using GameObjects;
-    using InputProviders;
+    using Battlefield.Logic.Contracts;
+    using Battlefield.Logic.Fields;
+    using Battlefield.Logic.GameObjects;
+    using Battlefield.Logic.InputProviders;
 
     public class Player
     {
-        //leave it public for future testing
+        ////leave it public for future testing
         public const string StringCannotBeNullOrEmpty = "Name cannot be null or empty!";
-=======
-﻿namespace Battlefield.Logic.Players
-{
-    using Contracts;
-
-    using Fields;
-
-    using GameObjects;
-
-    public class Player
-    {
->>>>>>> cfeb289ed63a3d0338c07bd56be7b30bb5f7b32c
         private readonly IInput input;
 
         private string name;
@@ -44,22 +32,20 @@
 
         public string Name
         {
-            get { return this.name; }
-<<<<<<< HEAD
+            get 
+            { 
+                return this.name;
+            }
             
             private set 
             {
-                if (string.IsNullOrEmpty(name))
+                if (string.IsNullOrEmpty(this.name))
                 {
                     throw new NullReferenceException(StringCannotBeNullOrEmpty);
                 }
 
                 this.name = value; 
             }
-=======
-            // validate name
-            private set { this.name = value; }
->>>>>>> cfeb289ed63a3d0338c07bd56be7b30bb5f7b32c
         }
 
         public int ShotCount { get; set; }
