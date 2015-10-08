@@ -1,4 +1,4 @@
-﻿namespace BattleField.GameObjects.Handlers
+﻿namespace Battlefield.Logic.GameObjects.Handlers
 {
     public class QuadBombHandler : BombHandler
     {

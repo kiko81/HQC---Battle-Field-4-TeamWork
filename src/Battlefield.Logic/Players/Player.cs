@@ -1,19 +1,14 @@
-﻿namespace BattleField.Players
+﻿namespace Battlefield.Logic.Players
 {
+    using Contracts;
+
     using Fields;
 
     using GameObjects;
 
-    using InputProviders;
-
     public class Player
-<<<<<<< HEAD:src/Players/Player.cs
     {
-=======
-    {
->>>>>>> f50b268fcf24e49ae73de27ec3b7c086daf0b4ff:src/Battlefield.Logic/Players/Player.cs
         private readonly IInput input;
-        private string name;
 
         private string name;
 
@@ -35,7 +30,7 @@
         public string Name
         {
             get { return this.name; }
-            //// validate name
+            // validate name
             private set { this.name = value; }
         }
 

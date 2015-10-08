@@ -1,8 +1,11 @@
-﻿using BattleField.Common;
-
-public interface IInput
+﻿namespace Battlefield.Logic.Contracts
 {
-    Coordinates GetTargetCoordinates();
+    using Common;
 
-    string GetNameInput(string player);
+    public interface IInput
+    {
+        Coordinates GetTargetCoordinates();
+
+        string GetNameInput(string player);
+    }
 }

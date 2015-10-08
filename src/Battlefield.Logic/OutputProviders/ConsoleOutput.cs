@@ -1,4 +1,4 @@
-﻿namespace BattleField.OutputProviders
+﻿namespace Battlefield.Logic.OutputProviders
 {
     using System;
 

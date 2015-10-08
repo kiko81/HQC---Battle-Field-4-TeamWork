@@ -1,4 +1,4 @@
-﻿namespace BattleField.Common
+﻿namespace Battlefield.Logic.Common
 {
     using System;
 
