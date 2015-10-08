@@ -2,15 +2,29 @@
 {
     public struct Coordinates
     {
+        private readonly int row;
+        private readonly int col;
+
         public Coordinates(int row, int col)
         {
-            this.Row = row;
-            this.Col = col;
+            this.row = row;
+            this.col = col;
         }
 
-        // both properties for validation only, when so remove getters - teammates welcome
-        private int Col { get; set; }
+        public int Row
+        {
+            get
+            {
+                return this.row;
+            }
+        }
 
-        private int Row { get; set; }
+        public int Col
+        {
+            get
+            {
+                return this.col;
+            }
+        }
     }
 }
