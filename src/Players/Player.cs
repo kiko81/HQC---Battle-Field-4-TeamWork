@@ -44,10 +44,13 @@
             if (this.ChainReactionEnabled)
             {
                 this.ChainReactionEnabled = false;
+
                 foreach (var bomb in this.Field.ChainedBombs)
                 {
                     Field.Explode(bomb, this.ChainReactionEnabled);
                 }
+
+                this.Field.ChainedBombs.Clear();
             }
 
             return bombsDetonated;
