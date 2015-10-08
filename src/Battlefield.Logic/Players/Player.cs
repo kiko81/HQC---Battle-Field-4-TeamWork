@@ -8,8 +8,9 @@
 
     public class Player
     {
-        private string name;
         private readonly IInput input;
+
+        private string name;
 
         public Player(string name, Field field, IInput input)
         {
@@ -37,7 +38,7 @@
 
         public int TakeAShot()
         {
-            var coordinates = input.GetTargetCoordinates();
+            var coordinates = this.input.GetTargetCoordinates();
 
             var bombsDetonated = Field.Explode(new Cell(coordinates), this.ChainReactionEnabled);
 
@@ -47,7 +48,7 @@
 
                 foreach (var bomb in this.Field.ChainedBombs)
                 {
-                    Field.Explode(bomb, this.ChainReactionEnabled);
+                    bombsDetonated += Field.Explode(bomb, this.ChainReactionEnabled);
                 }
 
                 this.Field.ChainedBombs.Clear();

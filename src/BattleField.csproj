@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BattleField</RootNamespace>
     <AssemblyName>BattleField</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -23,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -32,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -43,43 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Constants.cs" />
-    <Compile Include="Common\Coordinates.cs" />
-    <Compile Include="Common\RandomUtils.cs" />
-    <Compile Include="Contracts\Interface1.cs" />
-    <Compile Include="Engine.cs" />
-    <Compile Include="GameObjects\Cell.cs" />
-    <Compile Include="GameObjects\Handlers\BombHandler.cs" />
-    <Compile Include="GameObjects\Handlers\HorizontalBombHandler.cs" />
-    <Compile Include="GameObjects\Handlers\QuintBombHandler.cs" />
-    <Compile Include="GameObjects\Handlers\QuadBombHandler.cs" />
-    <Compile Include="GameObjects\Handlers\TripleBombHandler.cs" />
-    <Compile Include="Fields\Field.cs" />
-    <Compile Include="GameObjects\Handlers\DoubleBombHandler.cs" />
-    <Compile Include="GameObjects\Handlers\SingleBombHandler.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="GameObjects\DoubleBomb.cs" />
-    <Compile Include="GameObjects\Bomb.cs" />
-    <Compile Include="GameObjects\Handlers\VerticalBombHandler.cs" />
-    <Compile Include="GameObjects\Handlers\XBombHandler.cs" />
-    <Compile Include="GameObjects\HorizontalBomb.cs" />
-    <Compile Include="GameObjects\NoBomb.cs" />
-    <Compile Include="GameObjects\QuadBomb.cs" />
-    <Compile Include="GameObjects\QuintBomb.cs" />
-    <Compile Include="GameObjects\SingleBomb.cs" />
-    <Compile Include="GameObjects\TripleBomb.cs" />
-    <Compile Include="GameObjects\VerticalBomb.cs" />
-    <Compile Include="GameObjects\XBomb.cs" />
-    <Compile Include="InputProviders\ConsoleInput.cs" />
     <Compile Include="EntryPoint.cs" />
-    <Compile Include="OutputProviders\ConsoleOutput.cs" />
-    <Compile Include="Players\Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Diagram.cd" />
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Battlefield.Logic\Battlefield.Logic.csproj">
+      <Project>{adf8b8c9-c3dc-44e0-a3e8-6279e8cc0765}</Project>
+      <Name>Battlefield.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

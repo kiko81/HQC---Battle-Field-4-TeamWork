@@ -24,7 +24,7 @@
             ConsoleOutput.WelcomeMessage();
 
             var size = ConsoleInput.GetSizeInput();
-            IInput consoleInput= new ConsoleInput(size);
+            IInput consoleInput = new ConsoleInput(size);
             var minimumMines = Constants.MinimumPercentageOfBombs * size * size / 100;
             var maximumMines = (minimumMines * 2) + 1;
             var numberOfMines = RandomUtils.GenerateRandomNumber(minimumMines, maximumMines);
