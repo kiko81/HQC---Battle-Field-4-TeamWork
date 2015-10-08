@@ -1,17 +1,21 @@
 ﻿namespace BattleField.Players
 {
     using Fields;
+
+    using GameObjects;
+
     using InputProviders;
 
     public class Player
     {
         private string name;
-        private int shotCount;
+        private readonly IInput input;
 
-        public Player(string name, Field field)
+        public Player(string name, Field field, IInput input)
         {
             this.Name = name;
             this.Field = field;
+            this.input = input;
             this.NumberOfBombs = field.NumberOfBombs;
             this.ShotCount = 0;
         }
@@ -25,29 +29,26 @@
         public string Name
         {
             get { return this.name; }
+            // validate name
             private set { this.name = value; }
         }
 
-        public int ShotCount
-        {
-            get { return this.shotCount; }
-            set { this.shotCount = value; }
-        }
+        public int ShotCount { get; set; }
 
         public int TakeAShot()
         {
-            int x;
-            int y;
+            var coordinates = input.GetTargetCoordinates();
 
-            ConsoleInput.GetTargetCoordinates(Field.Size, out x, out y);
+            var bombsDetonated = Field.Explode(new Cell(coordinates), this.ChainReactionEnabled);
 
-            var bombsDetonated = Field.Explode(x, y, this.ChainReactionEnabled);
-
-            //if (this.ChainReactionEnabled)
-            //{
-            //    this.ChainReactionEnabled = false;
-            //    bombsDetonated += Field.ChainReact();
-            //}
+            if (this.ChainReactionEnabled)
+            {
+                this.ChainReactionEnabled = false;
+                foreach (var bomb in this.Field.ChainedBombs)
+                {
+                    Field.Explode(bomb, this.ChainReactionEnabled);
+                }
+            }
 
             return bombsDetonated;
         }

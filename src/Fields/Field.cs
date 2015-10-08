@@ -1,10 +1,10 @@
 ﻿namespace BattleField.Fields
 {
+    using System;
     using System.Collections.Generic;
     using System.Text;
 
     using Common;
-
     using GameObjects;
     using GameObjects.Handlers;
 
@@ -17,16 +17,16 @@
             this.FillFieldWithEmptyCells();
             this.NumberOfBombs = numberOfBombs;
             this.PlaceBombs(numberOfBombs);
-            this.ChainedMines = new List<Cell>();
+            this.ChainedBombs = new List<Cell>();
         }
 
         public int NumberOfBombs { get; private set; }
 
         public int Size { get; private set; }
 
-        private Cell[,] Grid { get; set; }
+        public Cell[,] Grid { get; set; }
 
-        private List<Cell> ChainedMines { get; set; }
+        public List<Cell> ChainedBombs { get; set; }
 
         public override string ToString()
         {
@@ -84,7 +84,7 @@
             return playField.ToString();
         }
 
-        public int Explode(int x, int y, bool chainEnabled)
+        public int Explode(Cell cell, bool chainEnabled)
         {
             BombHandler bomb1 = new SingleBombHandler();
             BombHandler bomb2 = new DoubleBombHandler();
@@ -103,9 +103,16 @@
             bomb6.SetSuccessor(bomb7);
             bomb7.SetSuccessor(bomb8);
 
-            int[,] expl;
+            var col = cell.Position.Col;
+            var row = cell.Position.Row;
+            int[,] explosion;
 
-            bomb1.HandleBombType(this.Grid[x, y].Value, out expl);
+            if (cell.Value == 0)
+            {
+                cell.Value = this.Grid[col, row].Value;
+            }
+
+            bomb1.HandleBombType(cell.Value, out explosion);
 
             // bomb explodes
             var minesExplodedThisRound = 0;
@@ -114,23 +121,24 @@
             {
                 for (var j = Constants.BombDownLeftRange; j <= Constants.BombUpRightRange; j++)
                 {
-                    if (x + i >= 0 && x + i < this.Size && y + j >= 0 && y + j < this.Size)
+                    if (col + i >= 0 && col + i < this.Size && row + j >= 0 && row + j < this.Size)
                     {
-                        if (expl[i + 2, j + 2] == Constants.DetonationSpot)
+                        if (explosion[i + 2, j + 2] == Constants.DetonationSpot)
                         {
-                            if (this.Grid[x + i, y + j].Value > 0)
+                            if (this.Grid[col + i, row + j].Value > 0)
                             {
                                 if (chainEnabled)
                                 {
-                                    // Fills array with cells and skips changing the grid - lefts the changes to chain reactions
-                                    this.ChainedMines.Add(new Cell(new Coordinates(x + i, y + j)));
+                                    // Fills list with cells for iterating explosions over it
+                                    var clonedCell = Grid[col + i, row + j].Clone() as Cell;
+                                    this.ChainedBombs.Add(clonedCell);
                                     continue;
                                 }
 
                                 minesExplodedThisRound++;
                             }
 
-                            this.Grid[x + i, y + j].Value = Constants.DetonatedCell;
+                            this.Grid[col + i, row + j].Value = Constants.DetonatedCell;
                         }
                     }
                 }
@@ -165,18 +173,6 @@
                     this.Grid[row, col] = new Cell(new Coordinates(row, col));
                 }
             }
-        }
-
-        public int ChainReact()
-        {
-            var minesExplodedThisRound = 0;
-
-            foreach (var chainedMine in this.ChainedMines)
-            {
-                ////minesExplodedThisRound += Explode(chainedMine.X, chainedMine.Y, false);
-            }
-
-            return minesExplodedThisRound;
         }
     }
 }

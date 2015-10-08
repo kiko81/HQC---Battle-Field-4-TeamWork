@@ -24,17 +24,18 @@
             ConsoleOutput.WelcomeMessage();
 
             var size = ConsoleInput.GetSizeInput();
+            IInput consoleInput= new ConsoleInput(size);
             var minimumMines = Constants.MinimumPercentageOfBombs * size * size / 100;
             var maximumMines = (minimumMines * 2) + 1;
             var numberOfMines = RandomUtils.GenerateRandomNumber(minimumMines, maximumMines);
 
             var field1 = new Field(size, numberOfMines);
-            var firstPlayerName = ConsoleInput.GetNameInput("first");
-            var player1 = new Player(firstPlayerName, field1);
+            var firstPlayerName = consoleInput.GetNameInput("first");
+            var player1 = new Player(firstPlayerName, field1, consoleInput);
 
             var field2 = new Field(size, numberOfMines);
-            var secondPlayerName = ConsoleInput.GetNameInput("second");
-            var player2 = new Player(secondPlayerName, field2);
+            var secondPlayerName = consoleInput.GetNameInput("second");
+            var player2 = new Player(secondPlayerName, field2, consoleInput);
 
             var engine = new Engine(player1, player2);
             

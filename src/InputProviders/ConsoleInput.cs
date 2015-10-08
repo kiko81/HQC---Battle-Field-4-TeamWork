@@ -4,8 +4,15 @@
 
     using Common;
 
-    public static class ConsoleInput
+    public class ConsoleInput : IInput
     {
+        private readonly int fieldsize;
+
+        public ConsoleInput(int size)
+        {
+            this.fieldsize = size;
+        }
+
         public static int GetSizeInput()
         {
             int fieldSize;
@@ -21,10 +28,10 @@
             return fieldSize;
         }
 
-        public static void GetTargetCoordinates(int size, out int col, out int row)
+        public Coordinates GetTargetCoordinates()
         {
-            col = 0;
-            row = 0;
+            int col = 0;
+            int row = 0;
             var isValidPosition = false;
 
             while (!isValidPosition) 
@@ -55,8 +62,8 @@
                         continue;
                     }
                     
-                    var rowOutOfBounds = col < 0 || size <= col;
-                    var colOutOfBounds = row < 0 || size <= row;
+                    var rowOutOfBounds = col < 0 || fieldsize <= col;
+                    var colOutOfBounds = row < 0 || fieldsize <= row;
 
                     if (rowOutOfBounds || colOutOfBounds)
                     {
@@ -72,9 +79,11 @@
                     Console.WriteLine("Invalid target!");
                 }
             }
+
+            return new Coordinates(row, col);
         }
 
-        public static string GetNameInput(string player)
+        public string GetNameInput(string player)
         {
             Console.Write("Please enter {0} player name: ", player);
             var input = Console.ReadLine();

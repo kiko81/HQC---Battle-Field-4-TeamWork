@@ -46,6 +46,7 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Coordinates.cs" />
     <Compile Include="Common\RandomUtils.cs" />
+    <Compile Include="Contracts\Interface1.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="GameObjects\Cell.cs" />
     <Compile Include="GameObjects\Handlers\BombHandler.cs" />
@@ -75,7 +76,6 @@
     <Compile Include="Players\Player.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Contracts\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
