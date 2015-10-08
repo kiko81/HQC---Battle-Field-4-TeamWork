@@ -7,8 +7,14 @@
     using InputProviders;
 
     public class Player
+<<<<<<< HEAD:src/Players/Player.cs
     {
+=======
+    {
+>>>>>>> f50b268fcf24e49ae73de27ec3b7c086daf0b4ff:src/Battlefield.Logic/Players/Player.cs
         private readonly IInput input;
+        private string name;
+
         private string name;
 
         public Player(string name, Field field, IInput input)
@@ -47,7 +53,7 @@
 
                 foreach (var bomb in this.Field.ChainedBombs)
                 {
-                    Field.Explode(bomb, this.ChainReactionEnabled);
+                    bombsDetonated += Field.Explode(bomb, this.ChainReactionEnabled);
                 }
 
                 this.Field.ChainedBombs.Clear();

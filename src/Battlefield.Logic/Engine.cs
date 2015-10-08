@@ -65,7 +65,12 @@
                     return;
                 }
 
+<<<<<<< HEAD:src/Engine.cs
                 ////currentPlayer.ChainReactionEnabled = true;
+=======
+                //currentPlayer.ChainReactionEnabled = true;
+
+>>>>>>> f50b268fcf24e49ae73de27ec3b7c086daf0b4ff:src/Battlefield.Logic/Engine.cs
                 ConsoleOutput.Print(string.Format("\n-#- {0}'s turn -#-", currentPlayer.Name));
 
                 // TODO
