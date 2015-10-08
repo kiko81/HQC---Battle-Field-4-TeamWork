@@ -8,8 +8,8 @@
 
     public class Player
     {
-        private string name;
         private readonly IInput input;
+        private string name;
 
         public Player(string name, Field field, IInput input)
         {
@@ -29,7 +29,7 @@
         public string Name
         {
             get { return this.name; }
-            // validate name
+            //// validate name
             private set { this.name = value; }
         }
 
@@ -37,7 +37,7 @@
 
         public int TakeAShot()
         {
-            var coordinates = input.GetTargetCoordinates();
+            var coordinates = this.input.GetTargetCoordinates();
 
             var bombsDetonated = Field.Explode(new Cell(coordinates), this.ChainReactionEnabled);
 

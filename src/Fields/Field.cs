@@ -130,7 +130,7 @@
                                 if (chainEnabled)
                                 {
                                     // Fills list with cells for iterating explosions over it
-                                    var clonedCell = Grid[col + i, row + j].Clone() as Cell;
+                                    var clonedCell = this.Grid[col + i, row + j].Clone() as Cell;
                                     this.ChainedBombs.Add(clonedCell);
                                     continue;
                                 }

@@ -62,8 +62,8 @@
                         continue;
                     }
                     
-                    var rowOutOfBounds = col < 0 || fieldsize <= col;
-                    var colOutOfBounds = row < 0 || fieldsize <= row;
+                    var rowOutOfBounds = col < 0 || this.fieldsize <= col;
+                    var colOutOfBounds = row < 0 || this.fieldsize <= row;
 
                     if (rowOutOfBounds || colOutOfBounds)
                     {
