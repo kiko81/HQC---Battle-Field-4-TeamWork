@@ -1,4 +1,4 @@
-﻿namespace BattleField.GameObjects
+﻿namespace Battlefield.Logic.GameObjects
 {
     using Common;
 

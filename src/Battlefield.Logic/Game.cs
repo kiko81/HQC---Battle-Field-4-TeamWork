@@ -1,9 +1,15 @@
-﻿namespace BattleField
+﻿namespace Battlefield.Logic
 {
     using Common;
+
+    using Contracts;
+
     using Fields;
+
     using InputProviders;
+
     using OutputProviders;
+
     using Players;
 
     public class Game

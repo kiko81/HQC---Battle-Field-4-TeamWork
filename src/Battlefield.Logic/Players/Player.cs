@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿namespace BattleField.Players
 {
     using System;
@@ -10,6 +11,18 @@
     {
         //leave it public for future testing
         public const string StringCannotBeNullOrEmpty = "Name cannot be null or empty!";
+=======
+﻿namespace Battlefield.Logic.Players
+{
+    using Contracts;
+
+    using Fields;
+
+    using GameObjects;
+
+    public class Player
+    {
+>>>>>>> cfeb289ed63a3d0338c07bd56be7b30bb5f7b32c
         private readonly IInput input;
 
         private string name;
@@ -32,6 +45,7 @@
         public string Name
         {
             get { return this.name; }
+<<<<<<< HEAD
             
             private set 
             {
@@ -42,6 +56,10 @@
 
                 this.name = value; 
             }
+=======
+            // validate name
+            private set { this.name = value; }
+>>>>>>> cfeb289ed63a3d0338c07bd56be7b30bb5f7b32c
         }
 
         public int ShotCount { get; set; }

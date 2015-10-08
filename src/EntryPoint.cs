@@ -1,5 +1,7 @@
 ﻿namespace BattleField
 {
+    using Battlefield.Logic;
+
     public class EntryPoint
     {
         public static void Main()
