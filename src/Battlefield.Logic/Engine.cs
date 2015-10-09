@@ -4,22 +4,25 @@
     using Battlefield.Logic.OutputProviders;
     using Battlefield.Logic.Players;
 
-    public class Engine
+    public class ConsoleEngine : IEngine
     {
-        private bool isGameOver;
 
-        public Engine(Player player1, Player player2)
+        private bool isGameOver;
+        private IPlayer player1;
+        private IPlayer player2;
+
+        public ConsoleEngine(IPlayer player1, IPlayer player2)
         {
             this.Player1 = player1;
             this.Player2 = player2;
             this.isGameOver = false;
         }
 
-        private Player Player1 { get; set; }
+        public IPlayer Player2 { get; set; }
 
-        private Player Player2 { get; set; }
+        public IPlayer Player1 { get; set; }
 
-        public void Start(Player currentPlayer)
+        public void Start(IPlayer currentPlayer)
         {
             while (!this.isGameOver)
             {
@@ -37,12 +40,12 @@
             ConsoleOutput.WinningMessage(currentPlayer.Name, currentPlayer.ShotCount);
         }
 
-        private void PrintField(Field field)
+        private void PrintField(IField field)
         {
             ConsoleOutput.Print(field.ToString());
         }
 
-        private void UpdateGame(Player currentPlayer)
+        private void UpdateGame(IPlayer currentPlayer)
         {
             while (true)
             {
@@ -69,7 +72,7 @@
 
                 ConsoleOutput.Print(string.Format("\n-#- {0}'s turn -#-", currentPlayer.Name));
 
-                // TODO
+                // TODO : observer?
                 // here more logic for conditions for bonuses and changing players
                 // if sth - no break - current player continues
                 // else if - current player continues with enhancement shot (e.g. chain reaction enabled for 1 shot)
@@ -78,7 +81,7 @@
             }
         }
 
-        private Player ChangePlayer(Player currentPlayer)
+        private IPlayer ChangePlayer(IPlayer currentPlayer)
         {
             return currentPlayer == this.Player1 ? this.Player2 : this.Player1;
         }

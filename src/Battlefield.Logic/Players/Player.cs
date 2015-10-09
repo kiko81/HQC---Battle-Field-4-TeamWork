@@ -1,16 +1,20 @@
 ﻿namespace Battlefield.Logic.Players
 {
-    using Battlefield.Logic.Contracts;
+    using System;
+
     using Battlefield.Logic.Fields;
     using Battlefield.Logic.GameObjects;
 
-    public class Player
-    {
-        private readonly IInput input;
+    using InputProviders;
 
+    public class Player : IPlayer
+    {
+        private const string StringCannotBeNullOrEmpty = "Name cannot be null or empty!";
+        private readonly IInput input;
+        private IField field;
         private string name;
 
-        public Player(string name, Field field, IInput input)
+        public Player(string name, IField field, IInput input)
         {
             this.Name = name;
             this.Field = field;
@@ -19,17 +23,25 @@
             this.ShotCount = 0;
         }
 
-        public int NumberOfBombs { get; set; }
+        public IField Field { get; set; }
 
-        public Field Field { get; private set; }
+        public int NumberOfBombs { get; set; }
 
         public bool ChainReactionEnabled { get; set; }
 
         public string Name
         {
             get { return this.name; }
-            // validate name
-            private set { this.name = value; }
+
+            private set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException(StringCannotBeNullOrEmpty);
+                }
+
+                this.name = value;
+            }
         }
 
         public int ShotCount { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace Battlefield.Logic.GameObjects
 {
-    using Common;
+    using Battlefield.Logic.Common;
 
     public class QuadBomb : Bomb
     {

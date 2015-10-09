@@ -8,7 +8,7 @@
 
     using Common;
 
-    public class Field
+    public class Field : IField
     {
         public Field(int size, int numberOfBombs)
         {

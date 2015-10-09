@@ -1,7 +1,6 @@
 ﻿namespace Battlefield.Logic
 {
     using Battlefield.Logic.Common;
-    using Battlefield.Logic.Contracts;
     using Battlefield.Logic.Fields;
     using Battlefield.Logic.InputProviders;
     using Battlefield.Logic.OutputProviders;
@@ -30,17 +29,17 @@
             var maximumMines = (minimumMines * 2) + 1;
             var numberOfMines = RandomUtils.GenerateRandomNumber(minimumMines, maximumMines);
 
-            var field1 = new Field(size, numberOfMines);
+            IField field1 = new Field(size, numberOfMines);
             var firstPlayerName = consoleInput.GetNameInput("first");
-            var player1 = new Player(firstPlayerName, field1, consoleInput);
+            IPlayer player1 = new Player(firstPlayerName, field1, consoleInput);
 
-            var field2 = new Field(size, numberOfMines);
+            IField field2 = new Field(size, numberOfMines);
             var secondPlayerName = consoleInput.GetNameInput("second");
-            var player2 = new Player(secondPlayerName, field2, consoleInput);
+            IPlayer player2 = new Player(secondPlayerName, field2, consoleInput);
 
-            var engine = new Engine(player1, player2);
+            IEngine consoleEngine = new ConsoleEngine(player1, player2);
             
-            engine.Start(player1);
+            consoleEngine.Start(player1);
         }
     }
 }

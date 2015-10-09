@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>IDE0001</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -44,9 +45,11 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Coordinates.cs" />
     <Compile Include="Common\RandomUtils.cs" />
-    <Compile Include="Contracts\IInput.cs" />
+    <Compile Include="IEngine.cs" />
+    <Compile Include="InputProviders\IInput.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Fields\Field.cs" />
+    <Compile Include="Fields\IField.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameObjects\Bomb.cs" />
     <Compile Include="GameObjects\Cell.cs" />
@@ -70,6 +73,7 @@
     <Compile Include="GameObjects\XBomb.cs" />
     <Compile Include="InputProviders\ConsoleInput.cs" />
     <Compile Include="OutputProviders\ConsoleOutput.cs" />
+    <Compile Include="Players\IPlayer.cs" />
     <Compile Include="Players\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

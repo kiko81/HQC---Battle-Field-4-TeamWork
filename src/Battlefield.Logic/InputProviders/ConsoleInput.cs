@@ -1,10 +1,7 @@
 ﻿namespace Battlefield.Logic.InputProviders
 {
     using System;
-
-    using Common;
-
-    using Contracts;
+    using Battlefield.Logic.Common;
 
     public class ConsoleInput : IInput
     {

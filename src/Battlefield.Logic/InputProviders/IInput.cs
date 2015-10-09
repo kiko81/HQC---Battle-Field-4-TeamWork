@@ -1,4 +1,4 @@
-﻿namespace Battlefield.Logic.Contracts
+﻿namespace Battlefield.Logic.InputProviders
 {
     using Battlefield.Logic.Common;
 

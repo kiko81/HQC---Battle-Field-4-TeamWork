@@ -6,13 +6,13 @@
 
     public class Cell : ICloneable
     {
-        public Cell(Coordinates coords)
+        public Cell(Coordinates coordinates)
         {
-            this.Position = coords;
+            this.Position = coordinates;
             this.Value = Constants.EmptyCell;
         }
 
-        public Coordinates Position { get; set; }
+        public Coordinates Position { get; private set; }
 
         public int Value { get; set; }
 
