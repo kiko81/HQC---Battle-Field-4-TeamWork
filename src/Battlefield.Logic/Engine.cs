@@ -6,21 +6,16 @@
 
     public class ConsoleEngine : IEngine
     {
-
         private bool isGameOver;
         private IPlayer player1;
         private IPlayer player2;
 
         public ConsoleEngine(IPlayer player1, IPlayer player2)
         {
-            this.Player1 = player1;
-            this.Player2 = player2;
+            this.player1 = player1;
+            this.player2 = player2;
             this.isGameOver = false;
         }
-
-        public IPlayer Player2 { get; set; }
-
-        public IPlayer Player1 { get; set; }
 
         public void Start(IPlayer currentPlayer)
         {
@@ -83,7 +78,7 @@
 
         private IPlayer ChangePlayer(IPlayer currentPlayer)
         {
-            return currentPlayer == this.Player1 ? this.Player2 : this.Player1;
+            return currentPlayer == this.player1 ? this.player2 : this.player1;
         }
     }
 }

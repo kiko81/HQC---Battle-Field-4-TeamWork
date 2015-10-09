@@ -45,6 +45,7 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Coordinates.cs" />
     <Compile Include="Common\RandomUtils.cs" />
+    <Compile Include="GameObjects\BombPatterns.cs" />
     <Compile Include="IEngine.cs" />
     <Compile Include="InputProviders\IInput.cs" />
     <Compile Include="Engine.cs" />

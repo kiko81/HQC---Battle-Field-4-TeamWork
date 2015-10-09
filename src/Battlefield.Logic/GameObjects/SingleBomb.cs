@@ -1,10 +1,15 @@
 ﻿namespace Battlefield.Logic.GameObjects
 {
-    using Battlefield.Logic.Common;
-
     public class SingleBomb : Bomb
     {
-        private readonly int[,] bomb = Constants.SingleBomb;
+        private readonly int[,] bomb =
+        {
+            { 0, 0, 0, 0, 0 },
+            { 0, 1, 0, 1, 0 },
+            { 0, 0, 1, 0, 0 },
+            { 0, 1, 0, 1, 0 },
+            { 0, 0, 0, 0, 0 }
+        };
 
         protected override int[,] Explode()
         {

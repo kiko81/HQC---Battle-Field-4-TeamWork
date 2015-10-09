@@ -2,12 +2,11 @@
 {
     public abstract class Bomb
     {
+        private int[,] bomb;
+
         public int[,] Explosion
         {
-            get
-            {
-                return this.Explode();
-            }
+            get { return this.Explode(); }
         }
 
         protected abstract int[,] Explode();
