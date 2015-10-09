@@ -11,6 +11,13 @@
 
     public class Field : IField
     {
+        private const int EmptyCell = 0;
+        private const int DetonatedCell = -1;
+        private const int BombDownLeftRange = -2;
+        private const int BombUpRightRange = 2;
+        private const int DetonationSpot = 1;
+        private const int KindsOfBombs = 9;
+
         public Field(int size, int numberOfBombs)
         {
             this.Size = size;
@@ -64,10 +71,10 @@
                     char symbol;
                     switch (this.Grid[row, col].Value)
                     {
-                        case Constants.EmptyCell:
+                        case EmptyCell:
                             symbol = '-';
                             break;
-                        case Constants.DetonatedCell:
+                        case DetonatedCell:
                             symbol = 'x';
                             break;
                         default:
@@ -102,13 +109,13 @@
             // bomb explodes
             var minesExplodedThisRound = 0;
 
-            for (var i = Constants.BombDownLeftRange; i <= Constants.BombUpRightRange; i++)
+            for (var i = BombDownLeftRange; i <= BombUpRightRange; i++)
             {
-                for (var j = Constants.BombDownLeftRange; j <= Constants.BombUpRightRange; j++)
+                for (var j = BombDownLeftRange; j <= BombUpRightRange; j++)
                 {
                     if (col + i >= 0 && col + i < this.Size && row + j >= 0 && row + j < this.Size)
                     {
-                        if (explosion[i + 2, j + 2] == Constants.DetonationSpot)
+                        if (explosion[i + 2, j + 2] == DetonationSpot)
                         {
                             if (this.Grid[col + i, row + j].Value > 0)
                             {
@@ -123,7 +130,7 @@
                                 minesExplodedThisRound++;
                             }
 
-                            this.Grid[col + i, row + j].Value = Constants.DetonatedCell;
+                            this.Grid[col + i, row + j].Value = DetonatedCell;
                         }
                     }
                 }
@@ -145,7 +152,7 @@
                     y = RandomUtils.GenerateRandomNumber(0, this.Size);
                 }
 
-                this.Grid[x, y].Value = RandomUtils.GenerateRandomNumber(1, Constants.KindsOfBombs);
+                this.Grid[x, y].Value = RandomUtils.GenerateRandomNumber(1, KindsOfBombs);
             }
         }
 

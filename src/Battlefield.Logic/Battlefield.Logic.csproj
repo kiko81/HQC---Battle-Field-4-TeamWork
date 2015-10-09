@@ -46,9 +46,9 @@
     <Compile Include="Common\Coordinates.cs" />
     <Compile Include="Common\RandomUtils.cs" />
     <Compile Include="GameObjects\BombPatterns.cs" />
-    <Compile Include="IEngine.cs" />
+    <Compile Include="Engines\IEngine.cs" />
     <Compile Include="InputProviders\IInput.cs" />
-    <Compile Include="Engine.cs" />
+    <Compile Include="Engines\Engine.cs" />
     <Compile Include="Fields\Field.cs" />
     <Compile Include="Fields\IField.cs" />
     <Compile Include="Game.cs" />

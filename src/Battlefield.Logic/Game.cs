@@ -1,6 +1,7 @@
 ﻿namespace Battlefield.Logic
 {
     using Battlefield.Logic.Common;
+    using Battlefield.Logic.Engines;
     using Battlefield.Logic.Fields;
     using Battlefield.Logic.InputProviders;
     using Battlefield.Logic.OutputProviders;
@@ -21,7 +22,7 @@
 
         public void Initiate()
         {
-            ConsoleOutput.WelcomeMessage();
+            ConsoleOutput.PrintWelcomeMessage();
 
             var size = ConsoleInput.GetSizeInput();
             IInput consoleInput = new ConsoleInput(size);
