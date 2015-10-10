@@ -15,12 +15,6 @@
 
         public int Value { get; set; }
 
-        //private object DeepCopy()
-        //{
-        //    var deepCopy = this.MemberwiseClone();
-        //    return deepCopy;
-        //}
-
         public object Clone()
         {
             return this.MemberwiseClone();

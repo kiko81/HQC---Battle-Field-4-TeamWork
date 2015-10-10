@@ -2,7 +2,6 @@
 {
     using System;
 
-    using Battlefield.Logic.Fields;
     using Battlefield.Logic.OutputProviders;
     using Battlefield.Logic.Players;
 
@@ -16,7 +15,6 @@
         {
             this.player1 = player1;
             this.player2 = player2;
-            this.isGameOver = false;
         }
 
         public void Start(IPlayer currentPlayer)
@@ -24,8 +22,8 @@
             while (!this.isGameOver)
             {
                 ConsoleOutput.Print(string.Format("\n-#- {0}'s turn -#-", currentPlayer.Name));
+                ConsoleOutput.Print(currentPlayer.Field.ToString());
 
-                this.PrintField(currentPlayer.Field);
                 this.UpdateGame(currentPlayer);
 
                 if (!this.isGameOver)
@@ -35,11 +33,6 @@
             }
 
             ConsoleOutput.PrintWinningMessage(currentPlayer.Name, currentPlayer.ShotCount);
-        }
-
-        private void PrintField(IField field)
-        {
-            ConsoleOutput.Print(field.ToString());
         }
 
         private void UpdateGame(IPlayer currentPlayer)
@@ -70,10 +63,9 @@
                     return;
                 }
 
-                //currentPlayer.ChainReactionEnabled = true;
+                // currentPlayer.ChainReactionEnabled = true;
                 ConsoleOutput.Print(string.Format("\n-#- {0}'s turn -#-", currentPlayer.Name));
 
-                // TODO : observer?
                 // here more logic for conditions for bonuses and changing players
                 // if sth - no break - current player continues
                 // else if - current player continues with enhancement shot (e.g. chain reaction enabled for 1 shot)

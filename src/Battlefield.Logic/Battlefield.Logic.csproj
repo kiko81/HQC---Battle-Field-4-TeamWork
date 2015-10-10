@@ -45,6 +45,7 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Coordinates.cs" />
     <Compile Include="Common\RandomUtils.cs" />
+    <Compile Include="Common\Validators.cs" />
     <Compile Include="GameObjects\Bombs\BombFactory.cs" />
     <Compile Include="Engines\IEngine.cs" />
     <Compile Include="GameObjects\ExplosionStrategy.cs" />

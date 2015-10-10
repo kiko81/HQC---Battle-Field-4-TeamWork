@@ -30,11 +30,10 @@
 
         public Coordinates GetTargetCoordinates()
         {
-            int col = 0;
-            int row = 0;
-            var isValidPosition = false;
+            int col;
+            int row;
 
-            while (!isValidPosition) 
+            while (true) 
             {
                 Console.Write("Please enter X and Y coordinates (e.g. a1): ");
                 var input = Console.ReadLine().Trim();
@@ -62,25 +61,19 @@
                         continue;
                     }
                     
-                    var rowOutOfBounds = col < 0 || this.fieldsize <= col;
-                    var colOutOfBounds = row < 0 || this.fieldsize <= row;
 
-                    if (rowOutOfBounds || colOutOfBounds)
+                    if (Validators.IsInBounds(row, this.fieldsize) && Validators.IsInBounds(col, this.fieldsize))
                     {
-                        Console.WriteLine("Invalid target! Shot out of bounds");
+                        return new Coordinates(row, col);
                     }
-                    else
-                    {
-                        isValidPosition = true;
-                    }
+
+                    Console.WriteLine("Invalid target! Shot out of bounds");
                 }
                 else
                 {
                     Console.WriteLine("Invalid target!");
                 }
             }
-
-            return new Coordinates(row, col);
         }
 
         public string GetNameInput(string player)

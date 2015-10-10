@@ -109,7 +109,8 @@
             {
                 for (var j = BombDownLeftRange; j <= BombUpRightRange; j++)
                 {
-                    if (col + i >= 0 && col + i < this.Size && row + j >= 0 && row + j < this.Size)
+                    if (Validators.IsInBounds(col + i, this.Size) &&
+                        Validators.IsInBounds(row + j, this.Size))
                     {
                         if (explosion[i + 2, j + 2] == DetonationSpot)
                         {
