@@ -1,11 +1,9 @@
 ﻿namespace Battlefield.Logic.Fields
 {
-    using System;
     using System.Collections.Generic;
     using System.Text;
 
     using Battlefield.Logic.GameObjects;
-    using Battlefield.Logic.GameObjects.Handlers;
 
     using Common;
 
@@ -102,9 +100,9 @@
                 cell.Value = this.Grid[col, row].Value;
             }
 
-            var bombChain = BombHandler.SetBombChain();
+            var bomb = new ExplosionStrategy(cell.Value);
 
-            var explosion = bombChain.HandleBombType(cell.Value);
+            var explosion = bomb.GetExplosion();
 
             // bomb explodes
             var minesExplodedThisRound = 0;
@@ -124,10 +122,11 @@
                                     // Fills list with cells for iterating explosions over it
                                     var clonedCell = this.Grid[col + i, row + j].Clone() as Cell;
                                     this.ChainedBombs.Add(clonedCell);
-                                    continue;
                                 }
-
-                                minesExplodedThisRound++;
+                                else
+                                {
+                                    minesExplodedThisRound++;
+                                }
                             }
 
                             this.Grid[col + i, row + j].Value = DetonatedCell;

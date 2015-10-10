@@ -1,5 +1,7 @@
 ﻿namespace Battlefield.Logic.Engines
 {
+    using System;
+
     using Battlefield.Logic.Fields;
     using Battlefield.Logic.OutputProviders;
     using Battlefield.Logic.Players;
@@ -44,6 +46,11 @@
         {
             while (true)
             {
+                if (currentPlayer.ChainReactionEnabled)
+                {
+                    Console.WriteLine("Chain Reaction ON");
+                }
+
                 var minesDetonated = currentPlayer.TakeAShot();
 
                 currentPlayer.ShotCount++;
@@ -64,7 +71,6 @@
                 }
 
                 //currentPlayer.ChainReactionEnabled = true;
-
                 ConsoleOutput.Print(string.Format("\n-#- {0}'s turn -#-", currentPlayer.Name));
 
                 // TODO : observer?

@@ -6,6 +6,8 @@
     using Battlefield.Logic.GameObjects;
     using Battlefield.Logic.InputProviders;
 
+    using Common;
+
     public class Player : IPlayer
     {
         private const string StringCannotBeNullOrEmpty = "Name cannot be null or empty!";
@@ -61,7 +63,7 @@
 
                 foreach (var bomb in this.Field.ChainedBombs)
                 {
-                    bombsDetonated += this.Field.Explode(bomb, this.ChainReactionEnabled);
+                    bombsDetonated += this.Field.Explode(bomb, false);
                 }
 
                 this.Field.ChainedBombs.Clear();

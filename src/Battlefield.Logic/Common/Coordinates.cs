@@ -1,6 +1,6 @@
 ﻿namespace Battlefield.Logic.Common
 {
-    public struct Coordinates
+    public class Coordinates
     {
         public Coordinates(int row, int col)
         {
@@ -8,8 +8,8 @@
             this.Col = col;
         }
 
-        public int Row { get; }
+        public int Row { get; set; }
 
-        public int Col { get; }
+        public int Col { get; set; }
     }
 }

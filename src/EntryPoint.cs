@@ -6,7 +6,7 @@
     {
         public static void Main()
         {
-            var game = Game.Instance();
+            var game = new Game();
             game.Initiate();
         }
     }

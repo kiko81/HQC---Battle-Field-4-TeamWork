@@ -45,39 +45,32 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Coordinates.cs" />
     <Compile Include="Common\RandomUtils.cs" />
-    <Compile Include="GameObjects\BombPatterns.cs" />
+    <Compile Include="GameObjects\Bombs\BombFactory.cs" />
     <Compile Include="Engines\IEngine.cs" />
+    <Compile Include="GameObjects\ExplosionStrategy.cs" />
     <Compile Include="InputProviders\IInput.cs" />
-    <Compile Include="Engines\Engine.cs" />
+    <Compile Include="Engines\ConsoleEngine.cs" />
     <Compile Include="Fields\Field.cs" />
     <Compile Include="Fields\IField.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="GameObjects\Bomb.cs" />
+    <Compile Include="GameObjects\Bombs\Bomb.cs" />
     <Compile Include="GameObjects\Cell.cs" />
-    <Compile Include="GameObjects\DoubleBomb.cs" />
-    <Compile Include="GameObjects\Handlers\BombHandler.cs" />
-    <Compile Include="GameObjects\Handlers\DoubleBombHandler.cs" />
-    <Compile Include="GameObjects\Handlers\HorizontalBombHandler.cs" />
-    <Compile Include="GameObjects\Handlers\QuadBombHandler.cs" />
-    <Compile Include="GameObjects\Handlers\QuintBombHandler.cs" />
-    <Compile Include="GameObjects\Handlers\SingleBombHandler.cs" />
-    <Compile Include="GameObjects\Handlers\TripleBombHandler.cs" />
-    <Compile Include="GameObjects\Handlers\VerticalBombHandler.cs" />
-    <Compile Include="GameObjects\Handlers\XBombHandler.cs" />
-    <Compile Include="GameObjects\HorizontalBomb.cs" />
-    <Compile Include="GameObjects\NoBomb.cs" />
-    <Compile Include="GameObjects\QuadBomb.cs" />
-    <Compile Include="GameObjects\QuintBomb.cs" />
-    <Compile Include="GameObjects\SingleBomb.cs" />
-    <Compile Include="GameObjects\TripleBomb.cs" />
-    <Compile Include="GameObjects\VerticalBomb.cs" />
-    <Compile Include="GameObjects\XBomb.cs" />
+    <Compile Include="GameObjects\Bombs\DoubleBomb.cs" />
+    <Compile Include="GameObjects\Bombs\HorizontalBomb.cs" />
+    <Compile Include="GameObjects\Bombs\NoBomb.cs" />
+    <Compile Include="GameObjects\Bombs\QuadBomb.cs" />
+    <Compile Include="GameObjects\Bombs\QuintBomb.cs" />
+    <Compile Include="GameObjects\Bombs\SingleBomb.cs" />
+    <Compile Include="GameObjects\Bombs\TripleBomb.cs" />
+    <Compile Include="GameObjects\Bombs\VerticalBomb.cs" />
+    <Compile Include="GameObjects\Bombs\XBomb.cs" />
     <Compile Include="InputProviders\ConsoleInput.cs" />
     <Compile Include="OutputProviders\ConsoleOutput.cs" />
     <Compile Include="Players\IPlayer.cs" />
     <Compile Include="Players\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

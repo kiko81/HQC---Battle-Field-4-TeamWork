@@ -9,17 +9,6 @@
 
     public class Game
     {
-        private static Game game;
-
-        private Game()
-        {
-        }
-
-        public static Game Instance()
-        {
-            return game ?? (game = new Game());
-        }
-
         public void Initiate()
         {
             ConsoleOutput.PrintWelcomeMessage();
