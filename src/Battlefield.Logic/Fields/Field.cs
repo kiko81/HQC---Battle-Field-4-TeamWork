@@ -101,12 +101,10 @@
             }
 
             var bomb = new ExplosionStrategy(cell.Value);
-
             var explosion = bomb.GetExplosion();
-
-            // bomb explodes
             var minesExplodedThisRound = 0;
 
+            // bomb explodes
             for (var i = BombDownLeftRange; i <= BombUpRightRange; i++)
             {
                 for (var j = BombDownLeftRange; j <= BombUpRightRange; j++)
