@@ -8,6 +8,14 @@
     {
         private readonly int fieldsize;
 
+        private const string FieldSizeConstraints = "Field size must be between {0} and {1}! Please enter valid field size: ";
+        private const string EnterXAndY = "Please enter X and Y coordinates (e.g. a1): ";
+        private const string InvalidX = "Invalid X coordinate!";
+        private const string InvalidY = "Invalid Y coordinate!";
+        private const string TargetOutOfBounds = "Invalid target! Shot out of bounds";
+        private const string InvalidTarget = "Invalid target!";
+        private const string EnterPlayerNameMessage = "Please enter {0} player name: ";
+
         public ConsoleInput(int size)
         {
             this.fieldsize = size;
@@ -20,7 +28,7 @@
 
             while (fieldSize < Constants.MinFieldSize || fieldSize > Constants.MaxFieldSize)
             {
-                Console.Write("Field size must be between {0} and {1}! Please enter valid field size: ", Constants.MinFieldSize, Constants.MaxFieldSize);
+                Console.Write(FieldSizeConstraints, Constants.MinFieldSize, Constants.MaxFieldSize);
 
                 int.TryParse(Console.ReadLine(), out fieldSize);
             }
@@ -35,7 +43,7 @@
 
             while (true) 
             {
-                Console.Write("Please enter X and Y coordinates (e.g. a1): ");
+                Console.Write(EnterXAndY);
                 var input = Console.ReadLine().Trim();
 
                 if (input.Length == 2 || input.Length == 3)
@@ -47,7 +55,7 @@
                     }
                     else
                     {
-                        Console.WriteLine("Invalid X coordinate!");
+                        Console.WriteLine(InvalidX);
                         continue;
                     }
 
@@ -57,7 +65,7 @@
                     }
                     else
                     {
-                        Console.WriteLine("Invalid Y coordinate!");
+                        Console.WriteLine(InvalidY);
                         continue;
                     }
                     
@@ -66,23 +74,23 @@
                         return new Coordinates(row, col);
                     }
 
-                    Console.WriteLine("Invalid target! Shot out of bounds");
+                    Console.WriteLine(TargetOutOfBounds);
                 }
                 else
                 {
-                    Console.WriteLine("Invalid target!");
+                    Console.WriteLine(InvalidTarget);
                 }
             }
         }
 
         public string GetNameInput(string player)
         {
-            Console.Write("Please enter {0} player name: ", player);
+            Console.Write(EnterPlayerNameMessage, player);
             var input = Console.ReadLine();
            
             while (string.IsNullOrWhiteSpace(input))
             {
-                Console.Write("Please enter some name for {0} player: ", player);
+                Console.Write(EnterPlayerNameMessage, player);
                 input = Console.ReadLine();
             }
 
