@@ -1,14 +1,12 @@
 ﻿namespace Battlefield.Logic.Engines
 {
-    using System;
-    using System.Runtime.CompilerServices;
-
     using Battlefield.Logic.OutputProviders;
     using Battlefield.Logic.Players;
 
     public class ConsoleEngine : IEngine
     {
         private const string ChainReactionOn = "Chain Reaction ON";
+        private const string BombInversionOn = "bomb Inversion ON";
 
         private bool isGameOver;
         private IPlayer player1;
@@ -45,7 +43,12 @@
             {
                 if (currentPlayer.ChainReactionEnabled)
                 {
-                    Console.WriteLine(ChainReactionOn);
+                    ConsoleOutput.Print(ChainReactionOn);
+                }
+
+                if (currentPlayer.Field.InvertExplosion)
+                {
+                    ConsoleOutput.Print(BombInversionOn);
                 }
 
                 var minesDetonated = currentPlayer.TakeAShot();
@@ -62,12 +65,22 @@
                     return;
                 }
 
-                if (minesDetonated == 0)
+                if (minesDetonated == 0 || minesDetonated > 7)
                 {
                     return;
                 }
 
-                currentPlayer.ChainReactionEnabled = true;
+                if (minesDetonated == 4)
+                {
+                    currentPlayer.Field.InvertExplosion = true;
+                }
+
+                if (minesDetonated > 4)
+                {
+                    currentPlayer.ChainReactionEnabled = true;
+                    return;
+                }
+
                 ConsoleOutput.Print(string.Format("\n-#- {0}'s turn -#-", currentPlayer.Name));
 
                 // here more logic for conditions for bonuses and changing players

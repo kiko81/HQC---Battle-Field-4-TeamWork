@@ -29,6 +29,8 @@
 
         public int Size { get; private set; }
 
+        public bool InvertExplosion { get; set; }
+
         public Cell[,] Grid { get; set; }
 
         public List<Cell> ChainedBombs { get; set; }
@@ -108,7 +110,10 @@
             }
 
             var bomb = new ExplosionStrategy(cell.Value);
-            var explosion = bomb.GetExplosion();
+            var explosion = this.InvertExplosion ? bomb.GetInvertedExplosion() : bomb.GetExplosion();
+
+            this.InvertExplosion = false;
+
             var minesExplodedThisRound = 0;
 
             // bomb explodes

@@ -16,6 +16,8 @@
 
         int Size { get; }
 
+        bool InvertExplosion { get; set; }
+
         int Explode(Cell cell, bool chainEnabled, CompositeBomb chainedBombs);
 
         string ToString();
