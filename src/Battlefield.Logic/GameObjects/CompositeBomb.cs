@@ -5,7 +5,7 @@
 
     using Battlefield.Logic.Fields;
 
-    public class CompositeBomb
+    public class CompositeBomb : Cell
     {
         private IList<Cell> chainedBombs;
 

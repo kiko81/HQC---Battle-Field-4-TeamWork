@@ -6,6 +6,10 @@
 
     public class Cell : ICloneable
     {
+        protected Cell()
+        {
+        }
+
         public Cell(Coordinates coordinates)
         {
             this.Position = coordinates;

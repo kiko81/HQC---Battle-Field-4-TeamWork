@@ -67,7 +67,7 @@
                     return;
                 }
 
-                // currentPlayer.ChainReactionEnabled = true;
+                currentPlayer.ChainReactionEnabled = true;
                 ConsoleOutput.Print(string.Format("\n-#- {0}'s turn -#-", currentPlayer.Name));
 
                 // here more logic for conditions for bonuses and changing players
