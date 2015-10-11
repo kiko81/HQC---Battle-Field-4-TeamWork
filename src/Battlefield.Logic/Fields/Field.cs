@@ -92,12 +92,18 @@
 
         public int Explode(Cell cell, bool chainEnabled)
         {
-            var col = cell.Position.Col;
-            var row = cell.Position.Row;
+            var fieldCol = cell.Position.Col;
+            var fieldRow = cell.Position.Row;
 
             if (cell.Value == 0)
             {
-                cell.Value = this.Grid[row, col].Value;
+                cell.Value = this.Grid[fieldRow, fieldCol].Value;
+
+                if (cell.Value == 0)
+                {
+                    this.Grid[fieldRow, fieldCol].Value = DetonatedCell;
+                    return 0;
+                }
             }
 
             var bomb = new ExplosionStrategy(cell.Value);
@@ -109,17 +115,17 @@
             {
                 for (var j = BombDownLeftRange; j <= BombUpRightRange; j++)
                 {
-                    if (Validators.IsInBounds(row + i, this.Size) &&
-                        Validators.IsInBounds(col + j, this.Size))
+                    if (Validators.IsInBounds(fieldRow + i, this.Size) &&
+                        Validators.IsInBounds(fieldCol + j, this.Size))
                     {
                         if (explosion[i + 2, j + 2] == DetonationSpot)
                         {
-                            if (this.Grid[row + i, col + j].Value > 0)
+                            if (this.Grid[fieldRow + i, fieldCol + j].Value > 0)
                             {
                                 if (chainEnabled)
                                 {
                                     // Fills list with cells for iterating explosions over it
-                                    var clonedCell = this.Grid[row + i, col + j].Clone() as Cell;
+                                    var clonedCell = this.Grid[fieldRow + i, fieldCol + j].Clone() as Cell;
                                     this.ChainedBombs.Add(clonedCell);
                                 }
                                 else
@@ -128,7 +134,7 @@
                                 }
                             }
 
-                            this.Grid[row + i, col + j].Value = DetonatedCell;
+                            this.Grid[fieldRow + i, fieldCol + j].Value = DetonatedCell;
                         }
                     }
                 }

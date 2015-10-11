@@ -6,8 +6,6 @@
 
     public class ConsoleInput : IInput
     {
-        private readonly int fieldsize;
-
         private const string FieldSizeConstraints = "Field size must be between {0} and {1}! Please enter valid field size: ";
         private const string EnterXAndY = "Please enter X and Y coordinates (e.g. a1): ";
         private const string InvalidX = "Invalid X coordinate!";
@@ -15,6 +13,8 @@
         private const string TargetOutOfBounds = "Invalid target! Shot out of bounds";
         private const string InvalidTarget = "Invalid target!";
         private const string EnterPlayerNameMessage = "Please enter {0} player name: ";
+
+        private readonly int fieldsize;
 
         public ConsoleInput(int size)
         {

@@ -1,5 +1,7 @@
 ﻿namespace Battlefield.Logic.GameObjects.Bombs
 {
+    using System;
+
     public class BombFactory
     {
         public static Bomb CreateBomb(int bombType)
@@ -23,7 +25,7 @@
                 case 8:
                     return XBomb.Instance;
                 default:
-                    return NoBomb.Instance;
+                    throw new ArgumentException("no bomb there");
             }
         }
     }

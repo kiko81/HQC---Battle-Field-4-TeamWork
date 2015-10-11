@@ -58,7 +58,6 @@
     <Compile Include="GameObjects\Cell.cs" />
     <Compile Include="GameObjects\Bombs\DoubleBomb.cs" />
     <Compile Include="GameObjects\Bombs\HorizontalBomb.cs" />
-    <Compile Include="GameObjects\Bombs\NoBomb.cs" />
     <Compile Include="GameObjects\Bombs\QuadBomb.cs" />
     <Compile Include="GameObjects\Bombs\QuintBomb.cs" />
     <Compile Include="GameObjects\Bombs\SingleBomb.cs" />
