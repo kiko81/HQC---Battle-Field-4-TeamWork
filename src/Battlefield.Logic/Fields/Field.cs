@@ -3,8 +3,8 @@
     using System.Collections.Generic;
     using System.Text;
 
-    using Battlefield.Logic.GameObjects;
     using Battlefield.Logic.Common;
+    using Battlefield.Logic.GameObjects;
 
     public class Field : IField
     {

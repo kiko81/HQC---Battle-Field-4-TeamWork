@@ -15,5 +15,12 @@
         {
             return this.bomb.Explode();
         }
+
+        public int[,] GetInvertedExplosion()
+        {
+            var invertedBomb = new Invertable(this.bomb);
+
+            return invertedBomb.InvertExplosion();
+        }
     }
 }
