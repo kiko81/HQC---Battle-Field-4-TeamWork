@@ -6,6 +6,7 @@
     {
         public static void Main()
         {
+            //Entry point of the program
             var game = new Game();
             game.Initiate();
         }
