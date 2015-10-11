@@ -51,7 +51,7 @@
                     var xCoordinate = char.ToUpper(input[0]);
                     if (char.IsLetter(xCoordinate))
                     {
-                        row = xCoordinate - 'A';
+                        col = xCoordinate - 'A';
                     }
                     else
                     {
@@ -59,9 +59,9 @@
                         continue;
                     }
 
-                    if (int.TryParse(input.Substring(1), out col))
+                    if (int.TryParse(input.Substring(1), out row))
                     {
-                        col -= 1;
+                        row -= 1;
                     }
                     else
                     {

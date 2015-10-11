@@ -97,7 +97,7 @@
 
             if (cell.Value == 0)
             {
-                cell.Value = this.Grid[col, row].Value;
+                cell.Value = this.Grid[row, col].Value;
             }
 
             var bomb = new ExplosionStrategy(cell.Value);
@@ -109,17 +109,17 @@
             {
                 for (var j = BombDownLeftRange; j <= BombUpRightRange; j++)
                 {
-                    if (Validators.IsInBounds(col + i, this.Size) &&
-                        Validators.IsInBounds(row + j, this.Size))
+                    if (Validators.IsInBounds(row + i, this.Size) &&
+                        Validators.IsInBounds(col + j, this.Size))
                     {
                         if (explosion[i + 2, j + 2] == DetonationSpot)
                         {
-                            if (this.Grid[col + i, row + j].Value > 0)
+                            if (this.Grid[row + i, col + j].Value > 0)
                             {
                                 if (chainEnabled)
                                 {
                                     // Fills list with cells for iterating explosions over it
-                                    var clonedCell = this.Grid[col + i, row + j].Clone() as Cell;
+                                    var clonedCell = this.Grid[row + i, col + j].Clone() as Cell;
                                     this.ChainedBombs.Add(clonedCell);
                                 }
                                 else
@@ -128,7 +128,7 @@
                                 }
                             }
 
-                            this.Grid[col + i, row + j].Value = DetonatedCell;
+                            this.Grid[row + i, col + j].Value = DetonatedCell;
                         }
                     }
                 }
