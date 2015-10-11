@@ -11,10 +11,9 @@
     {
         private const int EmptyCell = 0;
         private const int DetonatedCell = -1;
-        private const int BombDownLeftRange = -2;
-        private const int BombUpRightRange = 2;
+        private const int BombRadius = 2;
         private const int DetonationSpot = 1;
-        private const int KindsOfBombs = 9;
+        private const int KindsOfBombs = 8;
 
         public Field(int size, int numberOfBombs)
         {
@@ -92,13 +91,15 @@
 
         public int Explode(Cell cell, bool chainEnabled)
         {
-            var fieldCol = cell.Position.Col;
             var fieldRow = cell.Position.Row;
+            var fieldCol = cell.Position.Col;
 
+            // by default cell comes with coordinates only - ex. ChainReaction
             if (cell.Value == 0)
             {
                 cell.Value = this.Grid[fieldRow, fieldCol].Value;
 
+                // if no bomb  - detonate the cell and exit the method 
                 if (cell.Value == 0)
                 {
                     this.Grid[fieldRow, fieldCol].Value = DetonatedCell;
@@ -111,21 +112,21 @@
             var minesExplodedThisRound = 0;
 
             // bomb explodes
-            for (var i = BombDownLeftRange; i <= BombUpRightRange; i++)
+            for (var explosionRow = -BombRadius; explosionRow <= BombRadius; explosionRow++)
             {
-                for (var j = BombDownLeftRange; j <= BombUpRightRange; j++)
+                for (var explosionCol = -BombRadius; explosionCol <= BombRadius; explosionCol++)
                 {
-                    if (Validators.IsInBounds(fieldRow + i, this.Size) &&
-                        Validators.IsInBounds(fieldCol + j, this.Size))
+                    if (Validators.IsInBounds(fieldRow + explosionRow, this.Size) &&
+                        Validators.IsInBounds(fieldCol + explosionCol, this.Size))
                     {
-                        if (explosion[i + 2, j + 2] == DetonationSpot)
+                        if (explosion[explosionRow + BombRadius, explosionCol + BombRadius] == DetonationSpot)
                         {
-                            if (this.Grid[fieldRow + i, fieldCol + j].Value > 0)
+                            if (this.Grid[fieldRow + explosionRow, fieldCol + explosionCol].Value > EmptyCell)
                             {
                                 if (chainEnabled)
                                 {
                                     // Fills list with cells for iterating explosions over it
-                                    var clonedCell = this.Grid[fieldRow + i, fieldCol + j].Clone() as Cell;
+                                    var clonedCell = this.Grid[fieldRow + explosionRow, fieldCol + explosionCol].Clone() as Cell;
                                     this.ChainedBombs.Add(clonedCell);
                                 }
                                 else
@@ -134,7 +135,7 @@
                                 }
                             }
 
-                            this.Grid[fieldRow + i, fieldCol + j].Value = DetonatedCell;
+                            this.Grid[fieldRow + explosionRow, fieldCol + explosionCol].Value = DetonatedCell;
                         }
                     }
                 }
@@ -147,13 +148,13 @@
         {
             for (var i = 0; i < mineNumber; i++)
             {
-                var x = RandomUtils.GenerateRandomNumber(0, this.Size);
-                var y = RandomUtils.GenerateRandomNumber(0, this.Size);
+                var x = RandomUtils.GenerateRandomNumber(0, this.Size - 1);
+                var y = RandomUtils.GenerateRandomNumber(0, this.Size - 1);
 
                 while (this.Grid[x, y].Value != 0)
                 {
-                    x = RandomUtils.GenerateRandomNumber(0, this.Size);
-                    y = RandomUtils.GenerateRandomNumber(0, this.Size);
+                    x = RandomUtils.GenerateRandomNumber(0, this.Size - 1);
+                    y = RandomUtils.GenerateRandomNumber(0, this.Size - 1);
                 }
 
                 this.Grid[x, y].Value = RandomUtils.GenerateRandomNumber(1, KindsOfBombs);

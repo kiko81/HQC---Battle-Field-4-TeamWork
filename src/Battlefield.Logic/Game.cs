@@ -16,7 +16,7 @@
             var size = ConsoleInput.GetSizeInput();
             IInput consoleInput = new ConsoleInput(size);
             var minimumMines = Constants.MinimumPercentageOfBombs * size * size / 100;
-            var maximumMines = (minimumMines * 2) + 1;
+            var maximumMines = minimumMines * 2;
             var numberOfMines = RandomUtils.GenerateRandomNumber(minimumMines, maximumMines);
 
             IField field1 = new Field(size, numberOfMines);

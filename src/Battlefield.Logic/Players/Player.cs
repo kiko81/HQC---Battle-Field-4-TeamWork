@@ -6,8 +6,6 @@
     using Battlefield.Logic.GameObjects;
     using Battlefield.Logic.InputProviders;
 
-    using Common;
-
     public class Player : IPlayer
     {
         private const string StringCannotBeNullOrEmpty = "Name cannot be null or empty!";

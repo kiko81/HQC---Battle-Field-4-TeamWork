@@ -8,7 +8,7 @@
 
         public static int GenerateRandomNumber(int start, int end)
         {
-            return Rand.Next(start, end);
+            return Rand.Next(start, end + 1);
         }
     }
 }
