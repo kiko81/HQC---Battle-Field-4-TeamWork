@@ -7,6 +7,8 @@
 
     public class ConsoleEngine : IEngine
     {
+        private const string ChainReactionOn = "Chain Reaction ON";
+
         private bool isGameOver;
         private IPlayer player1;
         private IPlayer player2;
@@ -41,7 +43,7 @@
             {
                 if (currentPlayer.ChainReactionEnabled)
                 {
-                    Console.WriteLine("Chain Reaction ON");
+                    Console.WriteLine(ChainReactionOn);
                 }
 
                 var minesDetonated = currentPlayer.TakeAShot();
