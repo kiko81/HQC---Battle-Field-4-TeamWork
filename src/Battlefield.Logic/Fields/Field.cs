@@ -4,8 +4,7 @@
     using System.Text;
 
     using Battlefield.Logic.GameObjects;
-
-    using Common;
+    using Battlefield.Logic.Common;
 
     public class Field : IField
     {
@@ -146,18 +145,18 @@
 
         private void PlaceBombs(int mineNumber)
         {
-            for (var i = 0; i < mineNumber; i++)
+            for (var mine = 0; mine < mineNumber; mine++)
             {
-                var x = RandomUtils.GenerateRandomNumber(0, this.Size - 1);
-                var y = RandomUtils.GenerateRandomNumber(0, this.Size - 1);
+                var row = RandomUtils.GenerateRandomNumber(0, this.Size - 1);
+                var col = RandomUtils.GenerateRandomNumber(0, this.Size - 1);
 
-                while (this.Grid[x, y].Value != 0)
+                while (this.Grid[row, col].Value != 0)
                 {
-                    x = RandomUtils.GenerateRandomNumber(0, this.Size - 1);
-                    y = RandomUtils.GenerateRandomNumber(0, this.Size - 1);
+                    row = RandomUtils.GenerateRandomNumber(0, this.Size - 1);
+                    col = RandomUtils.GenerateRandomNumber(0, this.Size - 1);
                 }
 
-                this.Grid[x, y].Value = RandomUtils.GenerateRandomNumber(1, KindsOfBombs);
+                this.Grid[row, col].Value = RandomUtils.GenerateRandomNumber(1, KindsOfBombs);
             }
         }
 
