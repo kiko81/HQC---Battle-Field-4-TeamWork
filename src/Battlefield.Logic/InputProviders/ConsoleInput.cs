@@ -61,7 +61,6 @@
                         continue;
                     }
                     
-
                     if (Validators.IsInBounds(row, this.fieldsize) && Validators.IsInBounds(col, this.fieldsize))
                     {
                         return new Coordinates(row, col);
