@@ -49,6 +49,7 @@
     <Compile Include="GameObjects\Bombs\BombDecorator.cs" />
     <Compile Include="GameObjects\Bombs\BombFactory.cs" />
     <Compile Include="Engines\IEngine.cs" />
+    <Compile Include="GameObjects\CompositeBomb.cs" />
     <Compile Include="GameObjects\Bombs\Invertable.cs" />
     <Compile Include="GameObjects\ExplosionStrategy.cs" />
     <Compile Include="InputProviders\IInput.cs" />

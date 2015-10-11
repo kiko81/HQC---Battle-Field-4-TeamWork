@@ -11,7 +11,7 @@
             this.Position = coordinates;
         }
 
-        public Coordinates Position { get; set; }
+        public Coordinates Position { get; private set; }
 
         public int Value { get; set; }
 

@@ -53,18 +53,14 @@
         {
             var coordinates = this.input.GetTargetCoordinates();
 
-            var bombsDetonated = this.Field.Explode(new Cell(coordinates), this.ChainReactionEnabled);
+            var chainedBombs = new CompositeBomb();
+
+            var bombsDetonated = this.Field.Explode(new Cell(coordinates), this.ChainReactionEnabled, chainedBombs);
 
             if (this.ChainReactionEnabled)
             {
                 this.ChainReactionEnabled = false;
-
-                foreach (var bomb in this.Field.ChainedBombs)
-                {
-                    bombsDetonated += this.Field.Explode(bomb, false);
-                }
-
-                this.Field.ChainedBombs.Clear();
+                bombsDetonated += chainedBombs.ChainReact(this.Field);
             }
 
             return bombsDetonated;

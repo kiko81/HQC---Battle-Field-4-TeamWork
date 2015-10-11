@@ -5,6 +5,7 @@
 
     using Battlefield.Logic.Common;
     using Battlefield.Logic.GameObjects;
+    using Battlefield.Logic.GameObjects.Bombs;
 
     public class Field : IField
     {
@@ -88,7 +89,7 @@
             return playField.ToString();
         }
 
-        public int Explode(Cell cell, bool chainEnabled)
+        public int Explode(Cell cell, bool chainEnabled, CompositeBomb chainedBombs)
         {
             var fieldRow = cell.Position.Row;
             var fieldCol = cell.Position.Col;
@@ -124,14 +125,12 @@
                             {
                                 if (chainEnabled)
                                 {
-                                    // Fills list with cells for iterating explosions over it
                                     var clonedCell = this.Grid[fieldRow + explosionRow, fieldCol + explosionCol].Clone() as Cell;
-                                    this.ChainedBombs.Add(clonedCell);
+                                    chainedBombs.Add(clonedCell);
+                                    continue;
                                 }
-                                else
-                                {
-                                    minesExplodedThisRound++;
-                                }
+
+                                minesExplodedThisRound++;
                             }
 
                             this.Grid[fieldRow + explosionRow, fieldCol + explosionCol].Value = DetonatedCell;

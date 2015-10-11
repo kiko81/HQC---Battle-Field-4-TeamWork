@@ -1,6 +1,7 @@
 ﻿namespace Battlefield.Logic.Engines
 {
     using System;
+    using System.Runtime.CompilerServices;
 
     using Battlefield.Logic.OutputProviders;
     using Battlefield.Logic.Players;
@@ -37,6 +38,7 @@
             ConsoleOutput.PrintWinningMessage(currentPlayer.Name, currentPlayer.ShotCount);
         }
 
+        // this is templateMethod for our app
         private void UpdateGame(IPlayer currentPlayer)
         {
             while (true)
