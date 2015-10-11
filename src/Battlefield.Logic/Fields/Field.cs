@@ -5,7 +5,6 @@
 
     using Battlefield.Logic.Common;
     using Battlefield.Logic.GameObjects;
-    using Battlefield.Logic.GameObjects.Bombs;
 
     public class Field : IField
     {
@@ -76,10 +75,11 @@
                         case DetonatedCell:
                             symbol = 'x';
                             break;
-                        default:
-                            symbol = (char)('0' + this.Grid[row, col].Value);
+                        default: symbol = '-';
                             break;
-                            ////default: symbol = '-'; break;
+                            //// default:
+                            //    symbol = (char)('0' + this.Grid[row, col].Value);
+                            //    break;
                     }
 
                     playField.AppendFormat("{0} ", symbol);
