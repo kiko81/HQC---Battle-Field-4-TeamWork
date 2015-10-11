@@ -38,9 +38,6 @@
 
         public Coordinates GetTargetCoordinates()
         {
-            int col;
-            int row;
-
             while (true) 
             {
                 Console.Write(EnterXAndY);
@@ -49,6 +46,7 @@
                 if (input.Length == 2 || input.Length == 3)
                 {
                     var xCoordinate = char.ToUpper(input[0]);
+                    int col;
                     if (char.IsLetter(xCoordinate))
                     {
                         col = xCoordinate - 'A';
@@ -59,6 +57,7 @@
                         continue;
                     }
 
+                    int row;
                     if (int.TryParse(input.Substring(1), out row))
                     {
                         row -= 1;

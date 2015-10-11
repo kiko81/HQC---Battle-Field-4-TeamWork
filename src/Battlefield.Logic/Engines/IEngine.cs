@@ -1,6 +1,6 @@
-﻿namespace Battlefield.Logic
+﻿namespace Battlefield.Logic.Engines
 {
-    using Battlefield.Logic.Players;
+    using Players;
 
     public interface IEngine
     {

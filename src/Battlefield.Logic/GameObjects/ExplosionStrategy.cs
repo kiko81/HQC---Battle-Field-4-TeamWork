@@ -4,7 +4,7 @@
 
     public class ExplosionStrategy
     {
-        private Bomb bomb;
+        private readonly Bomb bomb;
 
         public ExplosionStrategy(int bombType)
         {

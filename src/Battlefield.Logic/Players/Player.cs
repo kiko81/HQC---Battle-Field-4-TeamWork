@@ -25,7 +25,7 @@
             this.ShotCount = 0;
         }
 
-        public IField Field { get; set; }
+        public IField Field { get; private set; }
 
         public int NumberOfBombs { get; set; }
 
