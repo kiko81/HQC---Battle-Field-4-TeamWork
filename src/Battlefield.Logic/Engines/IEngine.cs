@@ -4,6 +4,8 @@
 
     public interface IEngine
     {
+        bool IsGameOver { get; set; }
+
         void Start(IPlayer currentPlayer);
     }
 }

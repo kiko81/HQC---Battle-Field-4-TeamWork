@@ -8,8 +8,6 @@
 
     public interface IField
     {
-        List<Cell> ChainedBombs { get; set; }
-
         Cell[,] Grid { get; set; }
 
         int NumberOfBombs { get; }

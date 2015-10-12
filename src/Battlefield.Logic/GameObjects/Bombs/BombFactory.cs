@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class BombFactory
+    public static class BombFactory
     {
         public static Bomb CreateBomb(int bombType)
         {

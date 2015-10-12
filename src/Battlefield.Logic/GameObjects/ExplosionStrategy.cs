@@ -4,11 +4,17 @@
 
     public class ExplosionStrategy
     {
-        private readonly Bomb bomb;
+        private Bomb bomb;
 
         public ExplosionStrategy(int bombType)
         {
-            this.bomb = BombFactory.CreateBomb(bombType);
+            this.Bomb = BombFactory.CreateBomb(bombType);
+        }
+
+        public Bomb Bomb
+        {
+            get { return this.bomb; }
+            set { this.bomb = value; }
         }
 
         public int[,] GetExplosion()

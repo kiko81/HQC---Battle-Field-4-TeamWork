@@ -50,8 +50,19 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="FieldTests.cs" />
+    <Compile Include="Engines\ConsoleEngineTests.cs" />
+    <Compile Include="Fields\FieldTests.cs" />
+    <Compile Include="GameObjects\CompositeBombTests.cs" />
+    <Compile Include="GameObjects\ExplosionStrategyTests.cs" />
+    <Compile Include="InputProviders\ConsoleInputTests.cs" />
+    <Compile Include="Players\PlayerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\Battlefield.Logic\Battlefield.Logic.csproj">
+      <Project>{ADF8B8C9-C3DC-44E0-A3E8-6279E8CC0765}</Project>
+      <Name>Battlefield.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

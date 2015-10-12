@@ -21,7 +21,6 @@
             this.FillFieldWithEmptyCells();
             this.NumberOfBombs = numberOfBombs;
             this.PlaceBombs(numberOfBombs);
-            this.ChainedBombs = new List<Cell>();
         }
 
         public int NumberOfBombs { get; private set; }
@@ -31,8 +30,6 @@
         public bool InvertExplosion { get; set; }
 
         public Cell[,] Grid { get; set; }
-
-        public List<Cell> ChainedBombs { get; set; }
 
         public override string ToString()
         {

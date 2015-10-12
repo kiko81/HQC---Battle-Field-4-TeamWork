@@ -6,9 +6,9 @@
     public class ConsoleEngine : IEngine
     {
         private const string ChainReactionOn = "Chain Reaction ON";
-        private const string BombInversionOn = "bomb Inversion ON";
+        private const string BombInversionOn = "Bomb Inversion ON";
+        private const string CurrentPlayerAnnouncement = "\n-#- {0}'s turn -#-";
 
-        private bool isGameOver;
         private IPlayer player1;
         private IPlayer player2;
 
@@ -18,16 +18,18 @@
             this.player2 = player2;
         }
 
+        public bool IsGameOver { get; set; }
+
         public void Start(IPlayer currentPlayer)
         {
-            while (!this.isGameOver)
+            while (!this.IsGameOver)
             {
-                ConsoleOutput.Print(string.Format("\n-#- {0}'s turn -#-", currentPlayer.Name));
+                ConsoleOutput.Print(string.Format(CurrentPlayerAnnouncement, currentPlayer.Name));
                 ConsoleOutput.Print(currentPlayer.Field.ToString());
 
                 this.UpdateGame(currentPlayer);
 
-                if (!this.isGameOver)
+                if (!this.IsGameOver)
                 {
                     currentPlayer = this.ChangePlayer(currentPlayer);                    
                 }
@@ -61,7 +63,7 @@
 
                 if (currentPlayer.NumberOfBombs == 0)
                 {
-                    this.isGameOver = true;
+                    this.IsGameOver = true;
                     return;
                 }
 
@@ -81,13 +83,7 @@
                     return;
                 }
 
-                ConsoleOutput.Print(string.Format("\n-#- {0}'s turn -#-", currentPlayer.Name));
-
-                // here more logic for conditions for bonuses and changing players
-                // if sth - no break - current player continues
-                // else if - current player continues with enhancement shot (e.g. chain reaction enabled for 1 shot)
-                // else sth else - break and swap players
-                // else .......
+                ConsoleOutput.Print(string.Format(CurrentPlayerAnnouncement, currentPlayer.Name));
             }
         }
 
