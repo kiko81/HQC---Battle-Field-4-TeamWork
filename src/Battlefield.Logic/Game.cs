@@ -7,8 +7,14 @@
     using Battlefield.Logic.OutputProviders;
     using Battlefield.Logic.Players;
 
+    /// <summary>
+    /// Class holding facade method.
+    /// </summary>
     public class Game
     {
+        /// <summary>
+        /// Facade method initializing all needed for the game and starting it.
+        /// </summary>
         public void Initiate()
         {
             ConsoleOutput.PrintWelcomeMessage();

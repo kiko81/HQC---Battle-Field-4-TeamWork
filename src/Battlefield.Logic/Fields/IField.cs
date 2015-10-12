@@ -6,6 +6,9 @@
 
     using GameObjects.Bombs;
 
+    /// <summary>
+    /// Interface for field class.
+    /// </summary>
     public interface IField
     {
         Cell[,] Grid { get; set; }

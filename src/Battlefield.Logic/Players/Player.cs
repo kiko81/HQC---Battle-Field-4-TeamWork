@@ -6,6 +6,9 @@
     using Battlefield.Logic.GameObjects;
     using Battlefield.Logic.InputProviders;
 
+    /// <summary>
+    /// A player class
+    /// </summary>
     public class Player : IPlayer
     {
         private const string StringCannotBeNullOrEmpty = "Name cannot be null or empty!";
@@ -14,6 +17,12 @@
 
         private string name;
 
+        /// <summary>
+        /// Constructor for initialization of plyers.
+        /// </summary>
+        /// <param name="name">Name of the player.</param>
+        /// <param name="field">The player's playfield.</param>
+        /// <param name="input">Input object for receiving commands.</param>
         public Player(string name, IField field, IInput input)
         {
             this.Name = name;
@@ -49,6 +58,10 @@
 
         public int ShotCount { get; set; }
 
+        /// <summary>
+        /// Player shoots in playfield
+        /// </summary>
+        /// <returns>Bombs detonated.</returns>
         public int TakeAShot()
         {
             var coordinates = this.input.GetTargetCoordinates();

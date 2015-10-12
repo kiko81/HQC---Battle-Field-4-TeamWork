@@ -2,8 +2,16 @@
 {
     using System;
 
+    /// <summary>
+    /// Factory for creating bombs.
+    /// </summary>
     public static class BombFactory
     {
+        /// <summary>
+        /// Method for creating bombs.
+        /// </summary>
+        /// <param name="bombType">Integer value of the bomb.</param>
+        /// <returns>A bomb.</returns>
         public static Bomb CreateBomb(int bombType)
         {
             switch (bombType)

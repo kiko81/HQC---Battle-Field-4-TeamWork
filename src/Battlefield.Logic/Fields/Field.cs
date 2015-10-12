@@ -6,6 +6,9 @@
     using Battlefield.Logic.Common;
     using Battlefield.Logic.GameObjects;
 
+    /// <summary>
+    /// Field class holding the playfield.
+    /// </summary>
     public class Field : IField
     {
         private const int EmptyCell = 0;
@@ -31,6 +34,10 @@
 
         public Cell[,] Grid { get; set; }
 
+        /// <summary>
+        /// ToString overriding.
+        /// </summary>
+        /// <returns>String ready for printing.</returns>
         public override string ToString()
         {
             var playField = new StringBuilder();
@@ -88,6 +95,13 @@
             return playField.ToString();
         }
 
+        /// <summary>
+        /// Handling explosions.
+        /// </summary>
+        /// <param name="cell">Coordinates and eventually value of the cell.</param>
+        /// <param name="chainEnabled">Boolean value if chain reaction enabled.</param>
+        /// <param name="chainedBombs">Array for holding chained bombs.</param>
+        /// <returns>Number of bombs detonated.</returns>
         public int Explode(Cell cell, bool chainEnabled, CompositeBomb chainedBombs)
         {
             var fieldRow = cell.Position.Row;
@@ -144,6 +158,10 @@
             return minesExplodedThisRound;
         }
 
+        /// <summary>
+        /// Method arming the field with bombs.
+        /// </summary>
+        /// <param name="mineNumber">The number of mines to arm</param>
         private void PlaceBombs(int mineNumber)
         {
             for (var mine = 0; mine < mineNumber; mine++)
@@ -161,6 +179,9 @@
             }
         }
 
+        /// <summary>
+        /// Filling playfield with empty cells.
+        /// </summary>
         private void FillFieldWithEmptyCells()
         {
             for (int row = 0; row < this.Size; row++)

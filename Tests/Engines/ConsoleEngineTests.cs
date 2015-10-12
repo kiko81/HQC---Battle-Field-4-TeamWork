@@ -1,12 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Battlefield.Logic.Engines.Tests
+﻿namespace Battlefield.Tests.Engines
 {
-    using Fields;
+    using Logic.Engines;
+    using Logic.Fields;
+    using Logic.InputProviders;
+    using Logic.Players;
 
-    using InputProviders;
-
-    using Players;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class ConsoleEngineTests

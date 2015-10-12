@@ -3,6 +3,9 @@
     using Battlefield.Logic.OutputProviders;
     using Battlefield.Logic.Players;
 
+    /// <summary>
+    /// An engine class .
+    /// </summary>
     public class ConsoleEngine : IEngine
     {
         private const string ChainReactionOn = "Chain Reaction ON";
@@ -20,6 +23,10 @@
 
         public bool IsGameOver { get; set; }
 
+        /// <summary>
+        /// Starting, changing and finishing game.
+        /// </summary>
+        /// <param name="currentPlayer">The player on turn.</param>
         public void Start(IPlayer currentPlayer)
         {
             while (!this.IsGameOver)
@@ -38,7 +45,10 @@
             ConsoleOutput.PrintWinningMessage(currentPlayer.Name, currentPlayer.ShotCount);
         }
 
-        // this is templateMethod for our app
+        /// <summary>
+        /// Game update method (template).
+        /// </summary>
+        /// <param name="currentPlayer">The player currently playing.</param>
         private void UpdateGame(IPlayer currentPlayer)
         {
             while (true)
@@ -87,6 +97,11 @@
             }
         }
 
+        /// <summary>
+        /// Swapping current player with another.
+        /// </summary>
+        /// <param name="currentPlayer">The player currently playing.</param>
+        /// <returns>The other player.</returns>
         private IPlayer ChangePlayer(IPlayer currentPlayer)
         {
             return currentPlayer == this.player1 ? this.player2 : this.player1;
