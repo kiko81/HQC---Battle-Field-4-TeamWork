@@ -7,7 +7,7 @@
     {
         private Bomb bomb;
 
-        public BombDecorator(Bomb bomb)
+        protected BombDecorator(Bomb bomb)
         {
             this.bomb = bomb;
         }
